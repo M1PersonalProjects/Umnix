@@ -1,82 +1,70 @@
-# Руководство пользователя Umnix
+# User guide
 
-## 1. Вход и регистрация
+## Sign in
 
-Основная регистрация выполняется через Telegram-бота Umnix. После регистрации WebApp авторизует пользователя через подписанные данные Telegram WebApp. Вход только по Telegram ID по умолчанию отключён; он предназначен исключительно для локальной разработки при явном включении администратором.
+Users register through `@EduAI_platform_bot`. On the WebApp login page you can
+enter the Telegram ID of an existing account or choose **Sign in through Telegram
+Bot**. The second option opens the bot with a one-time confirmation link. After
+you confirm the account and return to the browser, the WebApp signs in
+automatically. The browser remembers the session for up to 30 days. Use the
+logout button to clear it and sign in with another Telegram ID.
 
-## 2. Роли
+## AI tutor
 
-### Ученик
+Create or open a chat, write a request, or attach a supported learning file.
+Each WebApp chat is independent: another chat has another memory and another file
+set. The tutor uses the latest 15 messages plus every file previously attached
+to the current chat.
 
-Ученик работает с AI-тьютором, выполняет задания Учителя и собственную AI-практику, открывает интерактивные упражнения и использует учебники.
+Book Mode can pin a textbook/page/paragraph. The tutor reads digitized database
+content for the selected scope and does not mix an unrelated chat file into that
+book context.
 
-### Учитель
+On phones the current compact tutor interface is preserved. On desktop the same
+workspace fills the available screen instead of being constrained to a narrow
+centered column.
 
-Учитель или Родитель управляет связанными Учениками, создаёт и генерирует задания, прикладывает материалы, получает результаты, использует ИИ-тьютора и аналитику. При регистрации можно выбрать именно «Учитель» или «Родитель»: функционал одинаковый, но интерфейс и Telegram-сообщения сохраняют выбранное название. В технической модели обе роли наставника хранятся как `parent`, а публичный вариант — в `mentor_kind`.
+## Files
 
-### Администратор
+Chat files can be previewed and downloaded. The file library groups stored
+attachments and supports removing a file from AI memory. Access is checked on
+the backend.
 
-Администратор управляет учебниками, страницами, оцифровкой, пользователями и журналом активности. Администратор также может использовать преподавательский режим там, где это предусмотрено API.
+## Teacher assignments
 
-## 3. AI-тьютор
+Teachers create a draft, review/edit it, select students, and explicitly send it.
+Student answers go to teacher review. AI may provide a review suggestion, but the
+teacher records the final score/comment.
 
-1. Откройте раздел **ИИ-тьютор**.
-2. Выберите существующий чат или создайте новый.
-3. Напишите вопрос или прикрепите учебный файл.
-4. Для работы по конкретному учебнику активируйте Book Mode.
-5. Ответы поддерживают Markdown и математические формулы.
+## Interactive applications
 
-Каждое сообщение показывает имя отправителя: `username`, а при его отсутствии — `tg_id`. В новом пустом чате один раз показывается приветствие `Добрый день, <username/tg_id>`. Список чатов имеет поиск; на desktop он компактно сворачивается, на телефоне открывается swipe-drawer. Внизу sidebar находится **Личный кабинет** с Telegram avatar → username → tg_id fallback.
+An interactive application can be opened in the isolated application view,
+downloaded as HTML, versioned, and assigned to a linked student. Teachers/admins
+can access answer information where authorized; students receive the learner
+view without the private answer key.
 
-## 4. Book Mode
+## Admin textbook digitization
 
-Book Mode закрепляет учебник/страницу/параграф как основной учебный контекст. Umnix сначала использует выбранный материал, а при недостатке информации может добавить релевантный контекст из других материалов или внешних источников. Выход из Book Mode возвращает чат к общему контексту.
+Open the Admin page and choose the digitization area.
 
-## 5. Файлы
+1. Drop PDF files or browse for them. One ZIP may contain up to 20 PDFs.
+2. Choose Preview.
+3. Verify and, if needed, edit class, subject, author, and title extracted from
+   the filename.
+4. Choose Digitize.
+5. Confirm that the textbook information has been checked.
+6. Follow the sequential job progress until every page is stored.
 
-В чатах и заданиях можно использовать поддерживаемые вложения. Система проверяет владельца файла и не должна давать одному пользователю доступ к чужому вложению. В заданиях Учитель отдельно выбирает, использовать ли файл как AI-контекст и показывать ли его Ученику.
+Expected filename format:
 
-Кнопка **Библиотека файлов** в AI Tutor открывает все сохранённые материалы из WebApp и Telegram, сгруппированные по чатам. Там доступны просмотр, скачивание и **Удалить из памяти**; последнее действие убирает вложение из истории соответствующих чатов и из AI-контекста. Если файл всё ещё нужен назначенному заданию, его служебная копия сохраняется для целостности задания.
+```text
+1|Mathematics|Author Name|Book Title.pdf
+```
 
-## 6. Задания Учителя
+The actual values may be in Russian; the separator is the `|` character.
 
-Обычное задание создаётся только через контролируемый черновик. Учитель начинает его на странице **Ученики** либо кнопкой **Создать задание** под ответом AI Tutor. Затем он проверяет и редактирует название, тему, текст, вопросы, комментарий, файлы и список Учеников. Только отдельная кнопка **Отправить Ученикам** превращает черновик в назначенное задание.
+## Admin activity
 
-Если AI создаёт интерактивное приложение, Учитель может открыть его для проверки и отправить Ученикам через отдельное подтверждение. Интерактивное приложение использует существующую систему заданий, а не параллельный список.
-
-Приватные AI-инструкции и полный эталон с финальным блоком `Ответы:` доступны только Учителю и не передаются Student API/HTML/JavaScript/Telegram.
-
-## 7. Выполнение и проверка заданий
-
-После отправки обычного задания Ученик вводит ответ и при необходимости прикрепляет документы или фотографии. Задание получает статус **Ожидает проверки Учителя**. Учитель открывает работу, при желании запрашивает подсказку AI, затем самостоятельно выставляет итоговый балл и комментарий.
-
-Интерактивные приложения проверяются автоматически на backend и не должны хранить открытый ключ ответов в Student HTML/JavaScript.
-
-## 8. Quest-test в Telegram
-
-Самостоятельный Quest-test запускается только в Telegram отдельной кнопкой рядом с «Учебники». Он не появляется отдельным разделом на сайте и не сохраняет состояние/результат в `tasks_history`: после завершения или `/cancel` временное состояние очищается.
-
-## 9. Интерактивные приложения
-
-Umnix умеет создавать интерактивные образовательные приложения. Они открываются в sandboxed iframe. Учитель может получить приватный ключ ответов, а проверка ответов выполняется сервером, чтобы эталон не попадал в браузер Ученика.
-
-## 10. Telegram
-
-Telegram поддерживает постоянно доступный AI-чат, учебники/Book Mode и отдельный Student Quest-test. Обычные задания Учителя создаются и проверяются через единый WebApp workflow; Telegram Quest-test с ними не смешивается.
-
-## 11. Если что-то не работает
-
-- обновите страницу и повторите действие;
-- проверьте подключение к интернету;
-- для Telegram WebApp откройте приложение заново из бота;
-- если AI временно недоступен, повторите запрос позже;
-- при проблеме с конкретным файлом попробуйте другой экспорт PDF/DOCX или уменьшите размер файла;
-- не отправляйте администраторам API keys, пароли или токены в сообщениях.
-
-## Настройка интерфейса
-
-В верхней панели доступна кнопка ⚙. В ней можно выбрать тему **Светлая / Тёмная / Система**. Режим «Система» следует настройке устройства, а выбор сохраняется между открытиями приложения.
-
-На телефоне основные разделы находятся в нижней navigation bar, остальные доступны через «Ещё». В AI Tutor список чатов и Book Mode открываются отдельными панелями и не уменьшают постоянную ширину чата. На desktop/tablet отдельные dashboard-модули можно менять местами перетаскиванием; команда «Сбросить расположение» возвращает стандартный порядок.
-
-Плавающая кнопка `↓/↑` появляется только после прокрутки и ведёт к противоположному краю текущей области прокрутки.
+The Activity area shows important user events together with existing chat and
+file history. Search by Telegram ID to focus on one user or enter words to find
+matching activity content.

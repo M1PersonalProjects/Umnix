@@ -1,31 +1,40 @@
-import asyncpg
+from __future__ import annotations
+
 from typing import Optional
+
+import asyncpg
+
 from config import settings
 from logger_config import logger
 
+
 class Database:
-    def __init__(self):
+    """Управляет общим пулом подключений PostgreSQL."""
+
+    def __init__(self) -> None:
         self.pool: Optional[asyncpg.Pool] = None
 
-    async def connect(self):
+    async def connect(self) -> None:
         if self.pool is not None:
             return
-            
         try:
             self.pool = await asyncpg.create_pool(
                 dsn=settings.database_url,
-                min_size=5,
-                max_size=20
+                min_size=1,
+                max_size=20,
+                command_timeout=60,
             )
-            logger.info("🚀 Пул соединений с PostgreSQL успешно запущен")
         except Exception as exc:
-            logger.critical(f"❌ Не удалось подключиться к базе данных: {exc}")
+            logger.critical("database_connect_failed error=%s", type(exc).__name__)
             raise
+        logger.info("database_connected")
 
-    async def disconnect(self):
-        if self.pool:
-            await self.pool.close()
-            self.pool = None
-            logger.info("🛑 Пул соединений с PostgreSQL остановлен")
+    async def disconnect(self) -> None:
+        if self.pool is None:
+            return
+        await self.pool.close()
+        self.pool = None
+        logger.info("database_disconnected")
+
 
 db = Database()

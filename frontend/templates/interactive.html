@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f8fc">
+<title>Интерактивное задание — Umnix</title>
+<script src="https://cdn.tailwindcss.com">
+</script>
+<script src="https://telegram.org/js/telegram-web-app.js">
+</script>
+<link rel="stylesheet" href="/static/css/app.css?v=20260825-umnix-2">
+<link rel="stylesheet" href="/static/css/interactive.css?v=20260819-mobile-1">
+</head>
+<body data-interactive-app-id="{{ app_id }}">
+<main class="interactive-shell">
+<header class="glass interactive-toolbar">
+<div class="interactive-toolbar-title min-w-0">
+<span class="umnix-brand" aria-label="Umnix">
+<span class="umnix-logo" aria-hidden="true">
+<span>u</span>
+</span>
+<span class="umnix-wordmark">Umnix</span>
+</span>
+<div class="min-w-0">
+<p class="text-xs font-bold uppercase tracking-[.16em] muted">Интерактивное задание</p>
+<h1 id="interactive-title" class="truncate text-lg font-extrabold">Загрузка…</h1>
+<p id="interactive-version" class="text-xs muted">
+</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-2">
+<button id="interactive-download" class="btn-secondary" type="button">Скачать HTML</button>
+<button id="interactive-answers" class="btn-secondary" type="button" hidden>Ответы</button>
+<button id="interactive-back" class="btn-primary" type="button">Назад</button>
+</div>
+</header>
+<section class="glass interactive-stage">
+<div id="interactive-loading" class="interactive-loading">Загружаем интерактивное задание…</div>
+<iframe
+        id="interactive-frame"
+        title="Интерактивное задание Umnix"
+        sandbox="allow-scripts"
+        referrerpolicy="no-referrer"
+        hidden
+      >
+</iframe>
+</section>
+<p id="interactive-result" class="interactive-result" hidden>
+</p>
+<section id="interactive-answers-panel" class="glass interactive-answers" hidden>
+<div class="flex items-center justify-between gap-3">
+<div>
+<p class="text-xs font-bold uppercase tracking-[.16em] muted">Только для Учителя</p>
+<h2 class="text-lg font-extrabold">Ответы и ориентиры проверки</h2>
+</div>
+<button id="interactive-answers-close" class="btn-secondary" type="button">Закрыть</button>
+</div>
+<div id="interactive-answers-content" class="mt-4 leading-7">
+</div>
+</section>
+</main>
+<script src="/static/js/client_logger.js?v=20260909-1">
+</script>
+<script src="/static/js/app.js?v=20260909-auth-1">
+</script>
+<script src="/static/js/interactive.js?v=20260816-latex-unified-1">
+</script>
+</body>
+</html>

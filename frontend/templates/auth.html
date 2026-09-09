@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f8fc">
+<title>Вход — Umnix</title>
+<script src="https://cdn.tailwindcss.com">
+</script>
+<script src="https://telegram.org/js/telegram-web-app.js">
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;550;650;750;850&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/app.css?v=20260825-umnix-2">
+</head>
+<body>
+<main class="min-h-screen grid lg:grid-cols-[1.1fr_.9fr]">
+<section class="hidden lg:flex relative overflow-hidden p-12 flex-col justify-between border-r border-white/10">
+<a class="umnix-brand" href="/auth.html" aria-label="Umnix">
+<span class="umnix-logo" aria-hidden="true">
+<span>u</span>
+</span>
+<span class="umnix-wordmark">Umnix</span>
+</a>
+<div class="relative z-10 max-w-xl">
+<span class="badge mb-6">
+<span class="status-dot">
+</span> Персональная учебная среда</span>
+<h1 class="gradient-text text-6xl font-[850] leading-[1.04] tracking-[-.055em]">
+Учиться с поддержкой. Расти с интересом.</h1>
+<p class="mt-6 max-w-lg text-lg leading-8 muted">
+ИИ-тьютор, семейные задания и понятный прогресс в одном безопасном пространстве.</p>
+</div>
+<div class="grid grid-cols-3 gap-3 max-w-xl">
+<div class="glass rounded-2xl p-4">
+<div class="text-2xl">✦</div>
+<p class="mt-3 text-sm muted">Подсказки вместо готовых ответов</p>
+</div>
+<div class="glass rounded-2xl p-4">
+<div class="text-2xl">◎</div>
+<p class="mt-3 text-sm muted">Задания по вашим учебникам</p>
+</div>
+<div class="glass rounded-2xl p-4">
+<div class="text-2xl">↗</div>
+<p class="mt-3 text-sm muted">Прогресс для всей семьи</p>
+</div>
+</div>
+</section>
+<section class="flex items-center justify-center px-4 py-10 sm:px-8">
+<div class="w-full max-w-md">
+<div class="lg:hidden flex items-center justify-center mb-8">
+<a class="umnix-brand" href="/auth.html" aria-label="Umnix">
+<span class="umnix-logo" aria-hidden="true">
+<span>u</span>
+</span>
+<span class="umnix-wordmark">Umnix</span>
+</a>
+</div>
+<div class="glass rounded-[1.6rem] p-5 sm:p-8">
+<div class="mb-7">
+<p class="text-sm font-bold text-emerald-200">Добро пожаловать</p>
+<h1 class="mt-2 text-3xl font-[850] tracking-tight">Войдите в пространство</h1>
+<p class="mt-2 muted">Войдите по Telegram ID или подтвердите аккаунт через Telegram Bot.</p>
+</div>
+<div id="telegram-entry" class="mb-5">
+<button id="telegram-login" class="btn-primary w-full" type="button">
+<span aria-hidden="true">✈</span> Войти через Telegram Bot</button>
+<p id="telegram-hint" class="mt-2 text-center text-xs muted">
+Откроется @EduAI_platform_bot. Подтвердите вход и вернитесь на эту страницу.</p>
+</div>
+<div id="telegram-progress" hidden class="py-10 text-center" role="status">
+<div class="mx-auto h-12 w-12 rounded-full border-4 border-white/10 border-t-emerald-300 animate-spin">
+</div>
+<p class="mt-5 font-bold">Подтверждение через Telegram</p>
+<p id="telegram-status" class="mt-2 text-sm muted">Ожидаем подтверждение…</p>
+</div>
+<div id="standard-auth">
+<div class="rounded-2xl border border-white/10 bg-white/[.035] p-4 mb-5 flex gap-3">
+<div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-sky-400/10 text-sky-200">↗</div>
+<div>
+<p class="font-bold">Telegram Bot</p>
+<p class="mt-1 text-sm muted">Подтвердите свой Telegram-аккаунт через @EduAI_platform_bot.</p>
+</div>
+</div>
+<div class="flex items-center gap-3 my-5">
+<span class="h-px flex-1 bg-white/10">
+</span>
+<span class="text-xs font-bold uppercase tracking-wider muted">В обычном браузере</span>
+<span class="h-px flex-1 bg-white/10">
+</span>
+</div>
+<form id="browser-login" class="grid gap-4">
+<div class="field">
+<label for="telegram-id">Telegram ID</label>
+<input id="telegram-id" class="input" type="number" min="1" inputmode="numeric" autocomplete="username"
+  placeholder="Например, 123456789"
+  required>
+</div>
+<button class="btn-primary w-full" type="submit">Продолжить <span aria-hidden="true">→</span>
+</button>
+</form>
+<div id="not-registered" hidden class="mt-5 rounded-2xl border border-amber-300/20 bg-amber-300/[.07] p-5 text-center">
+<div class="text-3xl" aria-hidden="true">👋</div>
+<h2 class="mt-3 font-extrabold">Вы ещё не зарегистрированы</h2>
+<p class="mt-2 text-sm text-amber-100/70">
+Откройте Telegram-бота и выберите подходящую роль: Ученик, Учитель или Родитель.</p>
+<a class="btn-secondary mt-4 w-full" href="https://t.me/EduAI_platform_bot" target="_blank" rel="noopener">
+Перейти в Telegram-бот</a>
+</div>
+</div>
+</div>
+<p class="mt-5 text-center text-xs muted">Продолжая, вы подтверждаете вход в свой аккаунт Umnix.</p>
+</div>
+</section>
+</main>
+<div class="toast-stack" aria-live="polite">
+</div>
+<script src="/static/js/client_logger.js?v=20260909-1">
+</script>
+<script src="/static/js/app.js?v=20260909-auth-2">
+</script>
+<script src="/static/js/auth.js?v=20260909-4">
+</script>
+</body>
+</html>

@@ -21,12 +21,27 @@ CREATE TABLE users (
 CREATE INDEX idx_users_parent_role ON users(parent_id, role);
 CREATE INDEX idx_users_role_mentor_kind ON users(role, mentor_kind);
 
+CREATE TABLE web_auth_requests (
+    request_id UUID PRIMARY KEY,
+    browser_token_hash TEXT NOT NULL,
+    bot_token_hash TEXT NOT NULL UNIQUE,
+    tg_id BIGINT,
+    approved_at TIMESTAMPTZ,
+    consumed_at TIMESTAMPTZ,
+    expires_at TIMESTAMPTZ NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX idx_web_auth_requests_expires ON web_auth_requests(expires_at);
+CREATE INDEX idx_web_auth_requests_tg_id ON web_auth_requests(tg_id, created_at DESC);
+
 CREATE TABLE book (
     book_id SERIAL PRIMARY KEY,
     book_title TEXT NOT NULL,
     book_program TEXT NOT NULL,
     book_class INTEGER NOT NULL CHECK (book_class BETWEEN 1 AND 11),
     book_author TEXT,
+    source_pdf_name TEXT,
+    source_pdf_path TEXT,
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (book_title, book_program, book_class)
 );
@@ -56,7 +71,8 @@ CREATE TABLE chat_sessions (
     book_id INTEGER REFERENCES book(book_id) ON DELETE SET NULL,
     page_id BIGINT REFERENCES page(page_id) ON DELETE SET NULL,
     context_locked BOOLEAN NOT NULL DEFAULT FALSE,
-    active_context_mode TEXT NOT NULL DEFAULT 'general' CHECK (active_context_mode IN ('general', 'book', 'attachment')),
+    active_context_mode TEXT NOT NULL DEFAULT 'general'
+        CHECK (active_context_mode IN ('general', 'book', 'attachment')),
     active_paragraph TEXT,
     active_attachment_ids INTEGER[] NOT NULL DEFAULT '{}'::INTEGER[],
     active_context_updated_at TIMESTAMPTZ,
@@ -135,7 +151,10 @@ CREATE TABLE tasks_history (
     cancellation_reason TEXT,
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CHECK ((assignment_source='teacher' AND parent_id IS NOT NULL) OR (assignment_source='tutor_practice' AND parent_id IS NULL))
+    CHECK (
+        (assignment_source='teacher' AND parent_id IS NOT NULL)
+        OR (assignment_source='tutor_practice' AND parent_id IS NULL)
+    )
 );
 CREATE INDEX idx_tasks_student_source_status ON tasks_history(student_id, assignment_source, status, created_at DESC);
 CREATE INDEX idx_tasks_teacher_source ON tasks_history(parent_id, assignment_source, created_at DESC);
@@ -151,7 +170,8 @@ CREATE TABLE task_submissions (
     teacher_comment TEXT,
     reviewed_by BIGINT REFERENCES users(tg_id) ON DELETE SET NULL,
     score DOUBLE PRECISION,
-    status TEXT NOT NULL DEFAULT 'pending_review' CHECK (status IN ('pending_review','reviewed','completed','needs_revision')),
+    status TEXT NOT NULL DEFAULT 'pending_review'
+        CHECK (status IN ('pending_review', 'reviewed', 'completed', 'needs_revision')),
     submitted_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     reviewed_at TIMESTAMPTZ,
     UNIQUE(task_id, student_id, attempt_number)
@@ -194,14 +214,20 @@ CREATE TABLE task_drafts (
     teacher_id BIGINT NOT NULL REFERENCES users(tg_id) ON DELETE CASCADE,
     source_message_id BIGINT REFERENCES chat_messages(message_id) ON DELETE SET NULL,
     interactive_app_id UUID REFERENCES interactive_apps(app_id) ON DELETE SET NULL,
-    title TEXT NOT NULL DEFAULT '', description TEXT NOT NULL DEFAULT '', subject TEXT NOT NULL DEFAULT 'Практика', topic TEXT NOT NULL DEFAULT '',
+    title TEXT NOT NULL DEFAULT '',
+    description TEXT NOT NULL DEFAULT '',
+    subject TEXT NOT NULL DEFAULT 'Практика',
+    topic TEXT NOT NULL DEFAULT '',
     parent_comment TEXT NOT NULL DEFAULT '', ai_instructions TEXT, reference_answer TEXT NOT NULL DEFAULT '',
-    book_id INTEGER REFERENCES book(book_id) ON DELETE SET NULL, page_id BIGINT REFERENCES page(page_id) ON DELETE SET NULL,
+    book_id INTEGER REFERENCES book(book_id) ON DELETE SET NULL,
+    page_id BIGINT REFERENCES page(page_id) ON DELETE SET NULL,
     student_ids JSONB NOT NULL DEFAULT '[]'::JSONB, attachment_ids JSONB NOT NULL DEFAULT '[]'::JSONB,
     attachment_options JSONB NOT NULL DEFAULT '[]'::JSONB, generated_items JSONB NOT NULL DEFAULT '[]'::JSONB,
     source_trace JSONB NOT NULL DEFAULT '[]'::JSONB, context_mode TEXT, used_pages JSONB NOT NULL DEFAULT '[]'::JSONB,
     status TEXT NOT NULL DEFAULT 'draft' CHECK (status IN ('draft','sent','cancelled')),
-    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP, sent_at TIMESTAMPTZ
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    sent_at TIMESTAMPTZ
 );
 CREATE INDEX idx_task_drafts_teacher_updated ON task_drafts(teacher_id, updated_at DESC);
 
@@ -256,7 +282,15 @@ CREATE TABLE textbook_digitization_jobs (
     stored_path TEXT NOT NULL,
     size_bytes BIGINT NOT NULL CHECK (size_bytes >= 0),
     checksum_sha256 CHAR(64) NOT NULL,
-    status TEXT NOT NULL CHECK (status IN ('matching','waiting_for_book','pending','processing','completed','failed','cancelled')),
+    proposed_book_class INTEGER,
+    proposed_book_program TEXT,
+    proposed_book_author TEXT,
+    proposed_book_title TEXT,
+    status TEXT NOT NULL
+        CHECK (status IN (
+            'matching', 'waiting_for_book', 'pending', 'processing',
+            'completed', 'failed', 'cancelled'
+        )),
     stage TEXT,
     match_type TEXT,
     error_text TEXT,
@@ -272,5 +306,20 @@ CREATE TABLE textbook_digitization_jobs (
 CREATE INDEX idx_digitization_jobs_status_created ON textbook_digitization_jobs(status, created_at);
 CREATE INDEX idx_digitization_jobs_batch ON textbook_digitization_jobs(batch_id, created_at);
 CREATE INDEX idx_digitization_jobs_checksum ON textbook_digitization_jobs(checksum_sha256);
+
+
+CREATE TABLE activity_events (
+    activity_id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL REFERENCES users(tg_id) ON DELETE CASCADE,
+    source TEXT NOT NULL CHECK (source IN ('web', 'telegram', 'system')),
+    action TEXT NOT NULL,
+    detail TEXT NOT NULL DEFAULT '',
+    session_id UUID REFERENCES chat_sessions(session_id) ON DELETE SET NULL,
+    attachment_id BIGINT REFERENCES attachments(attachment_id) ON DELETE SET NULL,
+    metadata JSONB NOT NULL DEFAULT '{}'::JSONB,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX idx_activity_user_created ON activity_events(user_id, created_at DESC);
+CREATE INDEX idx_activity_created ON activity_events(created_at DESC);
 
 COMMIT;

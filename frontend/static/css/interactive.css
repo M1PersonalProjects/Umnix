@@ -1,0 +1,73 @@
+html,
+body {
+  min-height: 0;
+}
+body {
+  margin: 0;
+}
+.interactive-shell {
+  width: min(1180px, calc(100% - 1.5rem));
+  margin: 0 auto;
+  padding: max(.75rem, env(safe-area-inset-top)) 0 max(1rem, env(safe-area-inset-bottom));
+}
+.interactive-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: .75rem;
+}
+.interactive-stage {
+  padding: .5rem;
+  min-height: 0;
+}
+#interactive-frame {
+  display: block;
+  width: 100%;
+  height: clamp(28rem, 70dvh, 50rem);
+  max-height: calc(var(--eduai-viewport-height, 100dvh) - 8rem);
+  border: 0;
+  border-radius: 1rem;
+  background: #fff;
+}
+.interactive-loading {
+  display: grid;
+  place-items: center;
+  min-height: 16rem;
+  color: #94a3b8;
+}
+.interactive-result {
+  margin-top: .75rem;
+  padding: .8rem 1rem;
+  border-radius: 1rem;
+  background: rgba(52,211,153,.12);
+}
+@media (max-width: 640px) {
+  .interactive-shell {
+    width: min(100% - .75rem, 1180px);
+  }
+  .interactive-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .interactive-stage {
+    min-height: 0;
+    padding: .25rem;
+  }
+  #interactive-frame {
+    height: max(24rem, calc(var(--eduai-viewport-height, 100dvh) - 10rem));
+    min-height: 0;
+    max-height: none;
+  }
+  .interactive-loading {
+    min-height: 12rem;
+  }
+}
+.interactive-answers {
+  margin-top: .75rem;
+  padding: 1rem;
+}
+#interactive-answers-content {
+  overflow-wrap: anywhere;
+}

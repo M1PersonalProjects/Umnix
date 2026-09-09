@@ -1,206 +1,199 @@
-# Umnix
+# Umnix / EduAI
 
-Umnix — единая образовательная платформа с WebApp, FastAPI backend, Telegram-ботом и AI-тьютором. Проект поддерживает роли **Ученик**, **Учитель**, **Родитель** и **Администратор**. Учитель и Родитель имеют одинаковый функционал наставника; в БД/API обе публичные роли используют техническую роль `parent`, а различие интерфейса хранится в `mentor_kind`, работу с учебниками и Book Mode, задания, интерактивные приложения, вложения и учебный прогресс.
+Umnix is an educational platform with a FastAPI backend, Telegram bot, WebApp,
+AI tutor, file workflows, teacher assignments, interactive applications, and
+textbook digitization.
 
-## Архитектура
+## Release architecture
 
 ```text
-WebApp / Telegram
-        │
-        ▼
-FastAPI routers / Telegram handlers
-        │
-        ▼
-shared services
-  ├─ tutor / context / memory
-  ├─ teacher task generation / manual review
-  ├─ attachments
-  ├─ interactive apps
-  ├─ textbook digitization
-  ├─ assignment source / task workflow
-  └─ services/ai (единый OpenAI client layer)
-        │
-        ▼
-PostgreSQL / filesystem / external AI
+backend/
+  auth/                  Telegram Bot/WebApp login and session/role security
+  api/                   FastAPI routers
+  bot/                   Aiogram bot, FSM states, and handlers
+  digitization_books/    PDF/ZIP textbook digitization pipeline
+  web/                   Shared application and AI business logic
+  files/
+    attachments/         Runtime user attachments
+    books/               Source textbook PDFs and rendered page images
+frontend/
+  static/css/            Shared UI styles
+  static/js/             Shared and role-specific browser logic
+  templates/             Jinja pages
+  digitization_books/    Admin digitization UI module
+docs/                    API, database, and user documentation
+tests/
+  unit/                   Pure service tests
+  contracts/              Architecture and feature contracts
+  smoke/                  Python and JavaScript syntax checks
+main.py                   FastAPI + Telegram polling entry point
+config.py                 Environment configuration
+database.py               asyncpg pool
+database.sql              Clean PostgreSQL schema
+logger_config.py          Compact application logging
 ```
 
-Подробности: [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) и [`docs/DEVELOPER_GUIDE.md`](docs/DEVELOPER_GUIDE.md).
+The old top-level `api/`, `bot/`, `services/`, `static/`, and `templates/`
+application trees are intentionally removed.
 
-## Технологии
+## Core behavior
 
-- Python 3.9+;
-- FastAPI / Uvicorn;
-- aiogram 3;
-- PostgreSQL / asyncpg;
-- OpenAI Python SDK;
-- Pydantic / pydantic-settings;
-- Jinja2 + vanilla JavaScript;
-- PyMuPDF для PDF;
-- pytest / pytest-asyncio.
+### AI tutor
 
-## Требования
+- Every WebApp chat has its own `session_id` and isolated memory.
+- A request uses only the latest 15 messages from that chat.
+- All previously attached files linked to that same chat are available to AI.
+- Files from other chats are never added to that session context.
+- Book Mode queries digitized `book` and `page` records before outside context.
+- Normal AI requests are capped at 600 seconds.
+- Textbook digitization is not subject to the 600-second application timeout.
+- Telegram uses one persistent Telegram chat session per user; WebApp chats remain
+  independent from each other.
 
-- Python 3.9 или новее;
-- PostgreSQL;
-- рабочий Telegram bot token;
-- OpenAI API key;
-- для Telegram WebApp в production — публичный HTTPS URL.
+### Attachments
 
-## Установка с нуля
+Uploaded files are stored under `backend/files/attachments/` and registered in
+PostgreSQL. Ownership is checked before preview, download, deletion, and AI use.
+Chat attachment history is linked through `chat_message_attachments`, including
+its `session_id`, so memory remains session-local.
+
+### Interactive applications
+
+Interactive applications are versioned. Authorized users can open/preview and
+download an HTML version. Teachers/admins can assign an application to linked
+students. Student submissions are graded on the backend rather than exposing a
+private answer key in the learner document.
+
+### Textbook digitization
+
+Admin digitization follows this flow:
+
+1. Upload one or more PDFs, or one ZIP containing up to 20 PDFs.
+2. Read book metadata from the filename format:
+   `class|subject|author|title.pdf`.
+3. Review and edit class, subject, author, and title in the preview table.
+4. Confirm the reviewed batch.
+5. Process books sequentially, page by page.
+6. Save the original PDF and per-page image, text, HTML, and Markdown.
+
+Digitized pages populate `page_title`, `page_number`, `page_paragraph`,
+`page_html`, `page_image`, `page_text`, and `page_markdown`. The digitizer asks
+for a meaningful Russian page title and only falls back to a generic page number
+when a meaningful topic cannot be established.
+
+### Authentication and diagnostics
+
+The browser supports two explicit login paths: Telegram ID for an existing user,
+or Telegram Bot confirmation through `@EduAI_platform_bot`. Bot login uses a
+10-minute one-time handshake stored in `web_auth_requests`; the bot confirms the
+real `message.from_user.id`, after which the browser receives its session token.
+The session is kept in local storage and is valid for 30 days. Logout clears it,
+so another Telegram ID can be used immediately.
+
+Every API action and Telegram message/callback is written to Terminal and
+`app.log` in the diagnostic form
+`DD.MM.YY_HH.MM.SS_tg_id_[HTTP status]_English explanation_file:line`.
+Static assets are excluded. System lifecycle messages may use the regular
+system-log format. Full searchable activity is also stored in PostgreSQL and the
+Admin Activity screen can be filtered by `tg_id` and text.
+
+## Responsive AI tutor
+
+The smartphone layout keeps the existing mobile rules and interaction model.
+For desktop widths the tutor workspace becomes a full-screen layout without a
+centered chat-width restriction or decorative side columns. The same controls
+remain in the same functional order.
+
+## Requirements
+
+- Python 3.11+
+- PostgreSQL
+- Telegram bot token
+- OpenAI API key
+- Node.js is optional and only used by the JavaScript syntax smoke test
+- Public HTTPS URL for Telegram WebApp production use
+
+## Installation
 
 ```bash
-git clone <repository-url> umnix
-cd umnix
 python3 -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
+source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
-# Создайте .env вручную или скопируйте .env.example, если используете шаблон
+cp .env.example .env
 ```
 
-Минимально задайте `BOT_TOKEN`, `OPENAI_API_KEY` и `DATABASE_URL`. Вход по одному Telegram ID отключён по умолчанию; для локальной разработки его можно явно включить через `ALLOW_BROWSER_LOGIN=true`. Секреты не должны попадать в Git.
+On Windows, activate the environment with `.venv\Scripts\activate`.
 
-## База данных и актуализация схемы
+Fill at least these `.env` variables:
 
-Каноническая схема находится в `database.sql`. Приложение не выполняет `ALTER TABLE` при старте: для новой установки создайте чистую БД из `database.sql`, а изменения существующей production-БД применяйте отдельной контролируемой миграцией после резервной копии.
+```env
+BOT_TOKEN=...
+OPENAI_API_KEY=...
+DATABASE_URL=postgresql://user:password@127.0.0.1:5432/umnix_db
+ADMIN_IDS=123456789
+WEBAPP_BASE_URL=http://127.0.0.1:8000
+BOT_USERNAME=EduAI_platform_bot
+```
 
-## Запуск
+Never commit the real `.env` file.
 
-### API + Telegram bot
+## Database
+
+For a clean installation, create an empty PostgreSQL database and apply:
+
+```bash
+psql "$DATABASE_URL" -f database.sql
+```
+
+`backend/web/schema_migrations.py` contains idempotent compatibility updates for
+an already existing database. Back up a production database before applying
+schema changes.
+
+## Run
+
+Run API and Telegram polling together:
 
 ```bash
 python main.py
 ```
 
-По умолчанию FastAPI слушает `127.0.0.1:8000`, а Telegram-бот запускается polling-процессом в том же приложении.
-
-### Только backend для разработки
+For API development only:
 
 ```bash
 uvicorn main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-При таком запуске FastAPI lifecycle всё равно подключает БД и worker оцифровки, но polling Telegram из `main()` не запускается.
+Main pages:
 
-## WebApp
+- `/auth`
+- `/student`
+- `/parent`
+- `/admin`
+- `/files`
+- `/interactive/{app_id}`
 
-Основные страницы:
+## Verification
 
-- `/auth` — вход;
-- `/student` — кабинет Ученика;
-- `/parent` — кабинет Учителя;
-- `/admin` — администрирование;
-- `/interactive/{app_id}` — интерактивное приложение.
-
-Legacy `.html` URL сохранены как совместимые UI-адаптеры.
-
-Frontend использует единый iOS-inspired design system в `static/css/app.css`: режимы Light/Dark/System, мягкий Umnix glow, glass-панели, компактную desktop navigation, compact mobile section sheet, swipe-drawer списка чатов, Book Mode sheet, `visualViewport` для экранной клавиатуры, сохранение layout/theme в `localStorage`, единый Markdown/Math renderer и `prefers-reduced-motion`. Интерфейс вдохновлён iOS/iPadOS/macOS, но не копирует системные приложения Apple.
-
-### Задания Учителя
-
-Обычное задание всегда проходит путь `черновик → редактирование/preview → выбор Ученика → отправка`. Ученик может приложить к ответу документы/фотографии. Черновик можно начать со страницы «Ученики» или из конкретного ответа AI Tutor. Ответ Ученика переводит обычное задание в `pending_review`; окончательную оценку и комментарий выставляет Учитель. AI может дать Учителю подсказку, но не принимает финальное решение. Интерактивные приложения остаются отдельным типом задания с автоматической серверной проверкой.
-
-### Quest-test
-
-Quest-test существует только в Telegram для Ученика. Его прогресс хранится только во временном FSM-состоянии и очищается после завершения или `/cancel`; отдельного Web-раздела и записей Quest-test в `tasks_history` нет.
-
-
-## AI и prompts
-
-- единственная точка создания OpenAI клиента: `services/ai/client.py`;
-- основная AI-модель, STT-модель, timeout и retries задаются через environment (`OPENAI_MODEL`, `OPENAI_TRANSCRIPTION_MODEL`, `OPENAI_TIMEOUT_SECONDS`, `OPENAI_MAX_RETRIES`);
-- системные prompt-блоки находятся в `services/prompts/`;
-- пользовательский язык не меняется из-за языка prompt;
-- Book Mode использует выбранный учебник как основной источник и соблюдает выбранный scope;
-- приватные эталонные ответы и AI instructions не должны попадать в Student DTO.
-
-## Вложения
-
-Runtime-файлы хранятся в `storage/attachments/` и не входят в репозиторий. Каталог создаётся автоматически при необходимости. Ограничения типов и ownership проверяются в `services/core/attachment_storage.py`.
-
-Страница `/files` показывает единое хранилище вложений WebApp и Telegram, сгруппированное по чатам. Пользователь может просмотреть или скачать файл, а действие «Удалить из памяти» удаляет связь с историей чата и AI-контекстом; физический файл удаляется только если он не нужен заданию или другой активной ссылке.
-
-## Тесты
+The release test suite is intentionally split by purpose:
 
 ```bash
 python -m pytest -q
-python -m compileall -q api bot services tests main.py config.py database.py
+python -m compileall -q backend tests main.py config.py database.py logger_config.py
 ```
 
-Перед релизом также вручную проверьте регистрацию/авторизацию, роли, AI Tutor, sender names и greeting нового чата, Book Mode, draft/send/manual-review flow заданий, файлы, Telegram, интерактивные приложения и их server-side grading, оцифровку, Math rendering и admin pages.
+When Node.js is installed, the smoke suite also runs `node --check` against all
+frontend JavaScript files.
 
-## Структура
+The line-length contract checks Python, JavaScript, CSS, HTML, and the root SQL
+schema and rejects code lines over 120 characters.
 
-```text
-api/
-  routers/               HTTP endpoints
-  schemas/               API/DTO models
-bot/
-  handlers/              Telegram scenarios
-services/
-  ai/                    единый AI-оркестратор и OpenAI client
-  core/                  файлы, память чата, форматирование
-  education/             Book Mode, учебный контекст, задания
-  interactive/           интерактивные приложения
-  digitization/          оцифровка учебников
-  bot/                   общие Telegram-сервисы
-  web/                   policy и идентичность WebApp
-  prompts/               system prompt blocks
-static/
-  css/                    design system and responsive styles
-  js/                     shared and role-specific frontend logic
-templates/                Jinja2 pages
-tests/                    automatic tests
-docs/                     user/developer/architecture docs
-storage/attachments/      runtime user files (ignored by Git)
-```
+External integration tests still require real infrastructure: PostgreSQL,
+Telegram, OpenAI credentials, and network access. The repository does not embed
+secrets, a database dump, or a virtual environment.
 
-## Troubleshooting
+## Documentation
 
-**`ModuleNotFoundError`** — активируйте созданный `.venv` и повторите `pip install -r requirements.txt`.
-
-**Не подключается PostgreSQL** — проверьте `DATABASE_URL`, доступность сервера и существование базовой схемы Umnix.
-
-**Telegram WebApp не авторизуется** — проверьте `BOT_TOKEN`, `WEBAPP_BASE_URL`, HTTPS и запуск страницы именно внутри Telegram.
-
-**OpenAI timeout / 502** — проверьте ключ, сеть, `OPENAI_TIMEOUT_SECONDS` и `OPENAI_MAX_RETRIES`.
-
-**PDF не обрабатывается** — убедитесь, что файл валиден и меньше 100 МБ; подробная причина должна оставаться в server log, а не показываться пользователю traceback-ом.
-
-## Документация
-
-- [`docs/USER_GUIDE.md`](docs/USER_GUIDE.md) — инструкция пользователя;
-- [`docs/DEVELOPER_GUIDE.md`](docs/DEVELOPER_GUIDE.md) — руководство разработчика и design system;
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — карта зависимостей и потоков;
-## Reference UI (Фон_ИИ.html)
-
-Актуальный WebApp использует единый iOS-like visual layer по мотивам предоставленного `Фон_ИИ.html`:
-
-- Light/Dark/System темы;
-- полупрозрачные glass-панели;
-- лёгкий `Matrix Formula Stream` на Canvas на всех страницах;
-- blue/violet/pink top glow только во время реальной обработки AI-запроса;
-- компактный desktop rail и off-canvas список чатов;
-- полноширинный ответ ИИ и пользовательская плашка не шире 75% рабочей области;
-- pill-shaped composer;
-- mobile drawer для чатов и bottom sheet для Book Mode.
-
-
-## Единый AI-оркестратор
-
-Все пользовательские AI-сценарии WebApp и Telegram входят через `services/ai/orchestrator.py::generate_response()`.
-Оркестратор собирает контекст текущей `session_id`, историю и память чата, вложения, Book Mode и выбранный AI-mode. Роутеры и Telegram handlers не создают prompt и не вызывают LLM-клиент напрямую.
-
-Основные mode: `chat`, `interactive_create`, `interactive_edit`, `interactive_answers`, `interactive_grade`, `quest`.
-Interactive Apps сохраняют версии, историю версий, скачивание HTML, редактирование выбранной версии и отправку Ученику.
-
-## База данных с нуля
-
-Каноническая схема находится в `database.sql`. Для новой БД используйте именно этот файл целиком; runtime `ALTER TABLE` больше не применяются.
-
-```bash
-createdb umnix_db
-psql -d umnix_db -f database.sql
-```
-
-Перед применением к существующей production-БД сделайте backup: `database.sql` рассчитан на чистое создание схемы, а не на миграцию существующих данных.
+- `docs/api_spec.md`
+- `docs/database_schema.md`
+- `docs/user_guide.md`

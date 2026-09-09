@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f2f2f7">
+<title>Библиотека файлов — Umnix</title>
+<script src="https://cdn.tailwindcss.com">
+</script>
+<script src="https://telegram.org/js/telegram-web-app.js">
+</script>
+<link rel="stylesheet" href="/static/css/app.css?v=20260825-umnix-2">
+</head>
+<body class="files-page">
+<main class="file-library-shell">
+<header class="topbar glass file-library-header">
+<div class="flex min-w-0 items-center gap-3">
+<a class="umnix-brand" href="/student.html" aria-label="Umnix">
+<span class="umnix-logo" aria-hidden="true">
+<span>u</span>
+</span>
+<span class="umnix-wordmark">Umnix</span>
+</a>
+<button id="files-back" class="icon-btn" type="button" aria-label="Вернуться в ИИ-тьютор">←</button>
+<div class="min-w-0">
+<p class="text-xs font-bold uppercase tracking-[.16em] muted">Ваши материалы</p>
+<h1 class="truncate text-lg font-extrabold">Библиотека файлов</h1>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button id="files-refresh" class="icon-btn" type="button" aria-label="Обновить библиотеку">↻</button>
+</div>
+</header>
+<section class="file-library-hero glass card">
+<div>
+<span class="badge">▣ Единая библиотека</span>
+<h2 class="mt-3 text-2xl font-extrabold">Материалы из сайта и Telegram</h2>
+<p class="mt-2 muted">
+Все файлы и фотографии сгруппированы по чатам, в которых они были отправлены. Удаление из памяти убирает файл из
+истории чата и из AI-контекста.</p>
+</div>
+<label class="file-library-search">
+<span class="sr-only">Поиск по файлам</span>
+<input id="files-search" class="input" type="search" autocomplete="off" placeholder="Поиск по названию файла или чата…">
+</label>
+</section>
+<div id="files-library" class="file-library-groups" aria-live="polite">
+<div class="empty-state glass card">
+<p>Загружаем библиотеку…</p>
+</div>
+</div>
+</main>
+<div class="toast-stack" aria-live="polite">
+</div>
+<script src="/static/js/client_logger.js?v=20260909-1">
+</script>
+<script src="/static/js/app.js?v=20260909-auth-1">
+</script>
+<script src="/static/js/files.js?v=20260823-clean-ui-1">
+</script>
+</body>
+</html>

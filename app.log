@@ -1,695 +1,93 @@
-2026-09-03 09:14:00 [WARNING] matplotlib.style.core: In /Users/georgii/Library/Python/3.9/lib/python/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'parseString' deprecated - use 'parse_string'
-2026-09-03 09:14:00 [WARNING] matplotlib.style.core: In /Users/georgii/Library/Python/3.9/lib/python/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'resetCache' deprecated - use 'reset_cache'
-2026-09-03 09:14:00 [WARNING] matplotlib.style.core: In /Users/georgii/Library/Python/3.9/lib/python/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'parseString' deprecated - use 'parse_string'
-2026-09-03 09:14:00 [WARNING] matplotlib.style.core: In /Users/georgii/Library/Python/3.9/lib/python/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'resetCache' deprecated - use 'reset_cache'
-2026-09-03 09:14:00 [WARNING] matplotlib.style.core: In /Users/georgii/Library/Python/3.9/lib/python/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'parseString' deprecated - use 'parse_string'
-2026-09-03 09:14:00 [WARNING] matplotlib.style.core: In /Users/georgii/Library/Python/3.9/lib/python/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'resetCache' deprecated - use 'reset_cache'
-2026-09-03 09:14:00 [WARNING] matplotlib.style.core: In /Users/georgii/Library/Python/3.9/lib/python/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'parseString' deprecated - use 'parse_string'
-2026-09-03 09:14:00 [WARNING] matplotlib.style.core: In /Users/georgii/Library/Python/3.9/lib/python/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'resetCache' deprecated - use 'reset_cache'
-2026-09-03 09:14:01 [INFO] httpx: HTTP Request: GET http://testserver/auth.html "HTTP/1.1 200 OK"
-2026-09-03 09:14:01 [INFO] httpx: HTTP Request: GET http://testserver/student.html "HTTP/1.1 200 OK"
-2026-09-03 09:14:01 [INFO] httpx: HTTP Request: GET http://testserver/parent.html "HTTP/1.1 200 OK"
-2026-09-03 09:14:01 [INFO] httpx: HTTP Request: GET http://testserver/admin.html "HTTP/1.1 200 OK"
-2026-09-03 09:14:01 [INFO] httpx: HTTP Request: GET http://testserver/static/css/app.css "HTTP/1.1 200 OK"
-2026-09-03 09:14:01 [INFO] httpx: HTTP Request: GET http://testserver/static/js/app.js "HTTP/1.1 200 OK"
-2026-09-03 09:14:01 [INFO] httpx: HTTP Request: GET http://testserver/static/js/chat.js "HTTP/1.1 200 OK"
-2026-09-03 09:14:01 [INFO] httpx: HTTP Request: POST http://test/api/v1/auth/browser-login "HTTP/1.1 200 OK"
-2026-09-03 09:14:01 [INFO] httpx: HTTP Request: GET http://test/api/v1/student/dashboard "HTTP/1.1 401 Unauthorized"
-2026-09-03 09:14:01 [INFO] httpx: HTTP Request: GET http://test/api/v1/tutor/sessions "HTTP/1.1 401 Unauthorized"
-2026-09-03 09:14:01 [INFO] httpx: HTTP Request: GET http://testserver/auth.html "HTTP/1.1 200 OK"
-2026-09-03 09:14:01 [INFO] httpx: HTTP Request: GET http://test/api/v1/admin/books "HTTP/1.1 401 Unauthorized"
-2026-09-03 09:14:01 [INFO] httpx: HTTP Request: POST http://test/api/v1/auth/browser-login "HTTP/1.1 403 Forbidden"
-2026-09-03 09:14:01 [INFO] Umnix: Telegram tutor request: user=501 type=text
-2026-09-03 09:14:01 [INFO] Umnix: Telegram tutor request: user=502 type=document
-2026-09-03 09:14:01 [INFO] Umnix: Обработана страница 1 книги 1
-2026-09-03 09:14:01 [INFO] Umnix: Telegram tutor request: user=777 type=text
-2026-09-03 09:14:01 [INFO] Umnix: Telegram tutor request: user=777 type=text
-2026-09-03 09:14:01 [INFO] Umnix: Telegram tutor request: user=777 type=text
-2026-09-03 09:14:01 [INFO] Umnix: Telegram tutor request: user=777 type=text
-2026-09-03 09:14:01 [INFO] Umnix: Telegram tutor request: user=777 type=text
-2026-09-03 09:15:13 [INFO] Umnix:  🚀  Веб-сервер FastAPI успешно запущен на http://localhost:8000
-2026-09-03 09:15:13 [INFO] Umnix:  🤖  Бот Umnix успешно запущен и слушает серверы Telegram (Polling)...
-2026-09-03 09:15:13 [INFO] uvicorn.error: Started server process [58005]
-2026-09-03 09:15:13 [INFO] uvicorn.error: Waiting for application startup.
-2026-09-03 09:15:13 [CRITICAL] Umnix: ❌ Не удалось подключиться к базе данных: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5432, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5432)
-2026-09-03 09:15:13 [ERROR] uvicorn.error: Traceback (most recent call last):
-  File "/Users/georgii/Library/Python/3.9/lib/python/site-packages/starlette/routing.py", line 694, in lifespan
-    async with self.lifespan_context(app) as maybe_state:
-  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 175, in __aenter__
-    return await self.gen.__anext__()
-  File "/Users/georgii/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 203, in merged_lifespan
-    async with original_context(app) as maybe_original_state:
-  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 175, in __aenter__
-    return await self.gen.__anext__()
-  File "/Users/georgii/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 203, in merged_lifespan
-    async with original_context(app) as maybe_original_state:
-  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 175, in __aenter__
-    return await self.gen.__anext__()
-  File "/Users/georgii/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 203, in merged_lifespan
-    async with original_context(app) as maybe_original_state:
-  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 175, in __aenter__
-    return await self.gen.__anext__()
-  File "/Users/georgii/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 203, in merged_lifespan
-    async with original_context(app) as maybe_original_state:
-  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 175, in __aenter__
-    return await self.gen.__anext__()
-  File "/Users/georgii/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 203, in merged_lifespan
-    async with original_context(app) as maybe_original_state:
-  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 175, in __aenter__
-    return await self.gen.__anext__()
-  File "/Users/georgii/Library/Python/3.9/lib/python/site-packages/fastapi/routing.py", line 203, in merged_lifespan
-    async with original_context(app) as maybe_original_state:
-  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 175, in __aenter__
-    return await self.gen.__anext__()
-  File "/Users/georgii/Documents/apps/EduAI_(TgBot+web)/EduAI_(tgBot)/main.py", line 31, in lifespan
-    await db.connect()
-  File "/Users/georgii/Documents/apps/EduAI_(TgBot+web)/EduAI_(tgBot)/database.py", line 15, in connect
-    self.pool = await asyncpg.create_pool(
-  File "/Users/georgii/Library/Python/3.9/lib/python/site-packages/asyncpg/pool.py", line 439, in _async__init__
-    await self._initialize()
-  File "/Users/georgii/Library/Python/3.9/lib/python/site-packages/asyncpg/pool.py", line 466, in _initialize
-    await first_ch.connect()
-  File "/Users/georgii/Library/Python/3.9/lib/python/site-packages/asyncpg/pool.py", line 153, in connect
-    self._con = await self._pool._get_new_connection()
-  File "/Users/georgii/Library/Python/3.9/lib/python/site-packages/asyncpg/pool.py", line 538, in _get_new_connection
-    con = await self._connect(
-  File "/Users/georgii/Library/Python/3.9/lib/python/site-packages/asyncpg/connection.py", line 2443, in connect
-    return await connect_utils._connect(
-  File "/Users/georgii/Library/Python/3.9/lib/python/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
-    raise last_error or exceptions.TargetServerAttributeNotMatched(
-  File "/Users/georgii/Library/Python/3.9/lib/python/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
-    conn = await _connect_addr(
-  File "/Users/georgii/Library/Python/3.9/lib/python/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
-    return await __connect_addr(params, True, *args)
-  File "/Users/georgii/Library/Python/3.9/lib/python/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
-    tr, pr = await connector
-  File "/Users/georgii/Library/Python/3.9/lib/python/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
-    tr, pr = await loop.create_connection(
-  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 1064, in create_connection
-    raise OSError('Multiple exceptions: {}'.format(
-OSError: Multiple exceptions: [Errno 61] Connect call failed ('::1', 5432, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 5432)
-
-2026-09-03 09:15:13 [ERROR] uvicorn.error: Application startup failed. Exiting.
-2026-09-03 09:15:14 [INFO] aiogram.dispatcher: Start polling
-2026-09-03 09:15:14 [INFO] aiogram.dispatcher: Run polling for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 09:16:04 [WARNING] aiogram.dispatcher: Received SIGINT signal
-2026-09-03 09:16:04 [INFO] aiogram.dispatcher: Polling stopped for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 09:16:04 [INFO] aiogram.dispatcher: Polling stopped
-2026-09-03 09:16:04 [INFO] Umnix:  🛑  Остановка сервисов бота...
-2026-09-03 09:16:04 [INFO] Umnix:  👋  Все системы Umnix успешно остановлены.
-2026-09-03 09:16:16 [INFO] Umnix:  🚀  Веб-сервер FastAPI успешно запущен на http://localhost:8000
-2026-09-03 09:16:16 [INFO] Umnix:  🤖  Бот Umnix успешно запущен и слушает серверы Telegram (Polling)...
-2026-09-03 09:16:16 [INFO] uvicorn.error: Started server process [58149]
-2026-09-03 09:16:16 [INFO] uvicorn.error: Waiting for application startup.
-2026-09-03 09:16:16 [INFO] Umnix: 🚀 Пул соединений с PostgreSQL успешно запущен
-2026-09-03 09:16:16 [INFO] Umnix:  🗄  Пул базы данных PostgreSQL успешно инициализирован.
-2026-09-03 09:16:16 [INFO] uvicorn.error: Application startup complete.
-2026-09-03 09:16:16 [INFO] uvicorn.error: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-2026-09-03 09:16:16 [INFO] Umnix: Textbook digitization worker started
-2026-09-03 09:16:16 [INFO] aiogram.dispatcher: Start polling
-2026-09-03 09:16:17 [INFO] aiogram.dispatcher: Run polling for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 09:16:28 [INFO] uvicorn.access: 127.0.0.1:62919 - "GET /parent.html HTTP/1.1" 200
-2026-09-03 09:16:31 [INFO] uvicorn.access: 127.0.0.1:62919 - "GET /static/js/parent.js?v=20260824-ux-polish-2 HTTP/1.1" 200
-2026-09-03 09:16:31 [INFO] uvicorn.access: 127.0.0.1:62924 - "GET /static/css/app.css?v=20260825-umnix-2 HTTP/1.1" 200
-2026-09-03 09:16:31 [INFO] uvicorn.access: 127.0.0.1:62925 - "GET /static/js/app.js?v=20260825-umnix-2 HTTP/1.1" 200
-2026-09-03 09:16:31 [INFO] uvicorn.access: 127.0.0.1:62926 - "GET /static/js/chat.js?v=20260824-ux-polish-2 HTTP/1.1" 200
-2026-09-03 09:16:33 [INFO] uvicorn.access: 127.0.0.1:62924 - "GET /api/v1/auth/session HTTP/1.1" 200
-2026-09-03 09:16:33 [INFO] uvicorn.access: 127.0.0.1:62924 - "GET /api/v1/parent/dashboard HTTP/1.1" 200
-2026-09-03 09:16:33 [INFO] uvicorn.access: 127.0.0.1:62925 - "GET /api/v1/parent/tasks HTTP/1.1" 200
-2026-09-03 09:16:33 [INFO] uvicorn.access: 127.0.0.1:62925 - "GET /api/v1/tutor/profile HTTP/1.1" 200
-2026-09-03 09:16:33 [INFO] uvicorn.access: 127.0.0.1:62924 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 09:16:34 [INFO] uvicorn.access: 127.0.0.1:62924 - "GET /api/v1/tutor/profile/avatar HTTP/1.1" 401
-2026-09-03 09:16:34 [INFO] uvicorn.access: 127.0.0.1:62926 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 09:16:34 [INFO] uvicorn.access: 127.0.0.1:62925 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 09:16:34 [INFO] uvicorn.access: 127.0.0.1:62925 - "GET /favicon.ico HTTP/1.1" 404
-2026-09-03 09:16:34 [INFO] uvicorn.access: 127.0.0.1:62926 - "GET /api/v1/tutor/sessions/8ae3ff59-f5a1-4f50-a737-c9971c83d4e5/messages HTTP/1.1" 200
-2026-09-03 09:16:44 [INFO] uvicorn.access: 127.0.0.1:63012 - "GET /admin.html HTTP/1.1" 200
-2026-09-03 09:16:44 [INFO] uvicorn.access: 127.0.0.1:63012 - "GET /static/js/admin.js?v=20260813-tz25-1 HTTP/1.1" 200
-2026-09-03 09:16:44 [INFO] uvicorn.access: 127.0.0.1:63012 - "GET /api/v1/auth/session HTTP/1.1" 200
-2026-09-03 09:16:44 [INFO] uvicorn.access: 127.0.0.1:63012 - "GET /api/v1/admin/digitization/empty-books HTTP/1.1" 200
-2026-09-03 09:16:44 [INFO] uvicorn.access: 127.0.0.1:63012 - "GET /api/v1/admin/digitization/jobs HTTP/1.1" 200
-2026-09-03 09:16:44 [INFO] uvicorn.access: 127.0.0.1:63012 - "GET /api/v1/admin/overview HTTP/1.1" 200
-2026-09-03 09:16:44 [INFO] uvicorn.access: 127.0.0.1:63013 - "GET /api/v1/admin/books HTTP/1.1" 200
-2026-09-03 09:16:44 [INFO] uvicorn.access: 127.0.0.1:63015 - "GET /api/v1/admin/family-tree HTTP/1.1" 200
-2026-09-03 09:16:44 [INFO] uvicorn.access: 127.0.0.1:63014 - "GET /api/v1/admin/users HTTP/1.1" 200
-2026-09-03 09:16:44 [INFO] uvicorn.access: 127.0.0.1:63016 - "GET /api/v1/admin/activity HTTP/1.1" 200
-2026-09-03 09:16:45 [INFO] uvicorn.access: 127.0.0.1:63016 - "GET /parent.html HTTP/1.1" 200
-2026-09-03 09:16:45 [INFO] uvicorn.access: 127.0.0.1:63016 - "GET /api/v1/auth/session HTTP/1.1" 200
-2026-09-03 09:16:45 [INFO] uvicorn.access: 127.0.0.1:63015 - "GET /api/v1/tutor/profile HTTP/1.1" 200
-2026-09-03 09:16:45 [INFO] uvicorn.access: 127.0.0.1:63013 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 09:16:45 [INFO] uvicorn.access: 127.0.0.1:63016 - "GET /api/v1/parent/dashboard HTTP/1.1" 200
-2026-09-03 09:16:45 [INFO] uvicorn.access: 127.0.0.1:63014 - "GET /api/v1/parent/tasks HTTP/1.1" 200
-2026-09-03 09:16:45 [INFO] uvicorn.access: 127.0.0.1:63014 - "GET /api/v1/tutor/profile/avatar HTTP/1.1" 401
-2026-09-03 09:16:45 [INFO] uvicorn.access: 127.0.0.1:63013 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 09:16:45 [INFO] uvicorn.access: 127.0.0.1:63016 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 09:16:45 [INFO] uvicorn.access: 127.0.0.1:63016 - "GET /api/v1/tutor/sessions/8ae3ff59-f5a1-4f50-a737-c9971c83d4e5/messages HTTP/1.1" 200
-2026-09-03 09:17:02 [INFO] uvicorn.access: 127.0.0.1:63145 - "POST /api/v1/tutor/sessions HTTP/1.1" 201
-2026-09-03 09:17:02 [INFO] uvicorn.access: 127.0.0.1:63145 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 09:17:02 [INFO] uvicorn.access: 127.0.0.1:63145 - "GET /api/v1/tutor/sessions/069280fd-fe32-4891-b11b-594a40efe88f/messages HTTP/1.1" 200
-2026-09-03 09:18:25 [INFO] Umnix: Web tutor request: user=5573274669 session=069280fd-fe32-4891-b11b-594a40efe88f attachment=none
-2026-09-03 09:18:39 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2026-09-03 09:18:39 [INFO] uvicorn.access: 127.0.0.1:63659 - "POST /api/v1/tutor/messages HTTP/1.1" 200
-2026-09-03 09:18:39 [INFO] uvicorn.access: 127.0.0.1:63659 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 09:19:20 [INFO] uvicorn.access: 127.0.0.1:64024 - "GET /interactive/2d95fd75-c2de-452e-997e-547d377f68fc?version=1 HTTP/1.1" 200
-2026-09-03 09:19:21 [INFO] uvicorn.access: 127.0.0.1:64025 - "GET /static/js/interactive.js?v=20260816-latex-unified-1 HTTP/1.1" 200
-2026-09-03 09:19:21 [INFO] uvicorn.access: 127.0.0.1:64024 - "GET /static/css/interactive.css?v=20260819-mobile-1 HTTP/1.1" 200
-2026-09-03 09:19:21 [INFO] uvicorn.access: 127.0.0.1:64024 - "GET /api/v1/interactive/2d95fd75-c2de-452e-997e-547d377f68fc?version=1 HTTP/1.1" 200
-2026-09-03 09:20:05 [INFO] Umnix: Web tutor request: user=5573274669 session=069280fd-fe32-4891-b11b-594a40efe88f attachment=none
-2026-09-03 09:20:23 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2026-09-03 09:20:23 [INFO] uvicorn.access: 127.0.0.1:64322 - "POST /api/v1/tutor/messages HTTP/1.1" 200
-2026-09-03 09:20:23 [INFO] uvicorn.access: 127.0.0.1:64322 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 09:21:19 [WARNING] aiogram.dispatcher: Received SIGINT signal
-2026-09-03 09:21:19 [INFO] aiogram.dispatcher: Polling stopped for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 09:21:19 [INFO] aiogram.dispatcher: Polling stopped
-2026-09-03 09:21:19 [INFO] Umnix:  🛑  Остановка сервисов бота...
-2026-09-03 09:21:19 [INFO] uvicorn.error: Shutting down
-2026-09-03 09:21:19 [INFO] uvicorn.error: Waiting for application shutdown.
-2026-09-03 09:21:19 [INFO] Umnix: Textbook digitization worker stopped
-2026-09-03 09:21:19 [INFO] Umnix: 🛑 Пул соединений с PostgreSQL остановлен
-2026-09-03 09:21:19 [INFO] Umnix:  🗄  Пул базы данных закрыт.
-2026-09-03 09:21:19 [INFO] uvicorn.error: Application shutdown complete.
-2026-09-03 09:21:19 [INFO] uvicorn.error: Finished server process [58149]
-2026-09-03 09:21:19 [INFO] Umnix:  👋  Все системы Umnix успешно остановлены.
-2026-09-03 11:15:58 [WARNING] matplotlib.style.core: In /Users/georgii/Library/Python/3.9/lib/python/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'parseString' deprecated - use 'parse_string'
-2026-09-03 11:15:58 [WARNING] matplotlib.style.core: In /Users/georgii/Library/Python/3.9/lib/python/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'resetCache' deprecated - use 'reset_cache'
-2026-09-03 11:15:58 [WARNING] matplotlib.style.core: In /Users/georgii/Library/Python/3.9/lib/python/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'parseString' deprecated - use 'parse_string'
-2026-09-03 11:15:58 [WARNING] matplotlib.style.core: In /Users/georgii/Library/Python/3.9/lib/python/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'resetCache' deprecated - use 'reset_cache'
-2026-09-03 11:15:58 [WARNING] matplotlib.style.core: In /Users/georgii/Library/Python/3.9/lib/python/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'parseString' deprecated - use 'parse_string'
-2026-09-03 11:15:58 [WARNING] matplotlib.style.core: In /Users/georgii/Library/Python/3.9/lib/python/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'resetCache' deprecated - use 'reset_cache'
-2026-09-03 11:15:58 [WARNING] matplotlib.style.core: In /Users/georgii/Library/Python/3.9/lib/python/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'parseString' deprecated - use 'parse_string'
-2026-09-03 11:15:58 [WARNING] matplotlib.style.core: In /Users/georgii/Library/Python/3.9/lib/python/site-packages/matplotlib/mpl-data/stylelib/classic.mplstyle: 'resetCache' deprecated - use 'reset_cache'
-2026-09-03 11:15:59 [INFO] httpx: HTTP Request: GET http://testserver/auth.html "HTTP/1.1 200 OK"
-2026-09-03 11:15:59 [INFO] httpx: HTTP Request: GET http://testserver/student.html "HTTP/1.1 200 OK"
-2026-09-03 11:15:59 [INFO] httpx: HTTP Request: GET http://testserver/parent.html "HTTP/1.1 200 OK"
-2026-09-03 11:15:59 [INFO] httpx: HTTP Request: GET http://testserver/admin.html "HTTP/1.1 200 OK"
-2026-09-03 11:15:59 [INFO] httpx: HTTP Request: GET http://testserver/static/css/app.css "HTTP/1.1 200 OK"
-2026-09-03 11:15:59 [INFO] httpx: HTTP Request: GET http://testserver/static/js/app.js "HTTP/1.1 200 OK"
-2026-09-03 11:15:59 [INFO] httpx: HTTP Request: GET http://testserver/static/js/chat.js "HTTP/1.1 200 OK"
-2026-09-03 11:15:59 [INFO] httpx: HTTP Request: POST http://test/api/v1/auth/browser-login "HTTP/1.1 200 OK"
-2026-09-03 11:15:59 [INFO] httpx: HTTP Request: GET http://test/api/v1/student/dashboard "HTTP/1.1 401 Unauthorized"
-2026-09-03 11:15:59 [INFO] httpx: HTTP Request: GET http://test/api/v1/tutor/sessions "HTTP/1.1 401 Unauthorized"
-2026-09-03 11:15:59 [INFO] httpx: HTTP Request: GET http://testserver/auth.html "HTTP/1.1 200 OK"
-2026-09-03 11:15:59 [INFO] httpx: HTTP Request: GET http://test/api/v1/admin/books "HTTP/1.1 401 Unauthorized"
-2026-09-03 11:15:59 [INFO] httpx: HTTP Request: POST http://test/api/v1/auth/browser-login "HTTP/1.1 403 Forbidden"
-2026-09-03 11:15:59 [INFO] Umnix: Telegram tutor request: user=501 type=text
-2026-09-03 11:15:59 [INFO] Umnix: Telegram tutor request: user=502 type=document
-2026-09-03 11:15:59 [INFO] Umnix: Обработана страница 1 книги 1
-2026-09-03 11:15:59 [INFO] Umnix: Telegram tutor request: user=777 type=text
-2026-09-03 11:15:59 [INFO] Umnix: Telegram tutor request: user=777 type=text
-2026-09-03 11:15:59 [INFO] Umnix: Telegram tutor request: user=777 type=text
-2026-09-03 11:15:59 [INFO] Umnix: Telegram tutor request: user=777 type=text
-2026-09-03 11:15:59 [INFO] Umnix: Telegram tutor request: user=777 type=text
-2026-09-03 11:16:05 [INFO] Umnix:  🚀  Веб-сервер FastAPI успешно запущен на http://localhost:8000
-2026-09-03 11:16:05 [INFO] Umnix:  🤖  Бот Umnix успешно запущен и слушает серверы Telegram (Polling)...
-2026-09-03 11:16:05 [INFO] uvicorn.error: Started server process [61330]
-2026-09-03 11:16:05 [INFO] uvicorn.error: Waiting for application startup.
-2026-09-03 11:16:05 [INFO] Umnix: 🚀 Пул соединений с PostgreSQL успешно запущен
-2026-09-03 11:16:05 [INFO] Umnix:  🗄  Пул базы данных PostgreSQL успешно инициализирован.
-2026-09-03 11:16:05 [INFO] uvicorn.error: Application startup complete.
-2026-09-03 11:16:05 [INFO] uvicorn.error: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-2026-09-03 11:16:05 [INFO] Umnix: Textbook digitization worker started
-2026-09-03 11:16:07 [CRITICAL] Umnix:  💥  Критическая ошибка в работе ядра: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None]
-2026-09-03 11:16:07 [INFO] Umnix:  🛑  Остановка сервисов бота...
-2026-09-03 11:16:07 [INFO] uvicorn.error: Shutting down
-2026-09-03 11:16:07 [INFO] uvicorn.error: Waiting for application shutdown.
-2026-09-03 11:16:07 [INFO] Umnix: Textbook digitization worker stopped
-2026-09-03 11:16:07 [INFO] Umnix: 🛑 Пул соединений с PostgreSQL остановлен
-2026-09-03 11:16:07 [INFO] Umnix:  🗄  Пул базы данных закрыт.
-2026-09-03 11:16:07 [INFO] uvicorn.error: Application shutdown complete.
-2026-09-03 11:16:07 [INFO] uvicorn.error: Finished server process [61330]
-2026-09-03 11:16:07 [INFO] Umnix:  👋  Все системы Umnix успешно остановлены.
-2026-09-03 11:16:12 [INFO] Umnix:  🚀  Веб-сервер FastAPI успешно запущен на http://localhost:8000
-2026-09-03 11:16:12 [INFO] Umnix:  🤖  Бот Umnix успешно запущен и слушает серверы Telegram (Polling)...
-2026-09-03 11:16:12 [INFO] uvicorn.error: Started server process [61430]
-2026-09-03 11:16:12 [INFO] uvicorn.error: Waiting for application startup.
-2026-09-03 11:16:12 [INFO] Umnix: 🚀 Пул соединений с PostgreSQL успешно запущен
-2026-09-03 11:16:12 [INFO] Umnix:  🗄  Пул базы данных PostgreSQL успешно инициализирован.
-2026-09-03 11:16:12 [INFO] uvicorn.error: Application startup complete.
-2026-09-03 11:16:12 [INFO] uvicorn.error: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-2026-09-03 11:16:12 [INFO] Umnix: Textbook digitization worker started
-2026-09-03 11:16:14 [CRITICAL] Umnix:  💥  Критическая ошибка в работе ядра: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None]
-2026-09-03 11:16:14 [INFO] Umnix:  🛑  Остановка сервисов бота...
-2026-09-03 11:16:15 [INFO] uvicorn.error: Shutting down
-2026-09-03 11:16:15 [INFO] uvicorn.error: Waiting for application shutdown.
-2026-09-03 11:16:15 [INFO] Umnix: Textbook digitization worker stopped
-2026-09-03 11:16:15 [INFO] Umnix: 🛑 Пул соединений с PostgreSQL остановлен
-2026-09-03 11:16:15 [INFO] Umnix:  🗄  Пул базы данных закрыт.
-2026-09-03 11:16:15 [INFO] uvicorn.error: Application shutdown complete.
-2026-09-03 11:16:15 [INFO] uvicorn.error: Finished server process [61430]
-2026-09-03 11:16:15 [INFO] Umnix:  👋  Все системы Umnix успешно остановлены.
-2026-09-03 11:16:41 [INFO] Umnix:  🚀  Веб-сервер FastAPI успешно запущен на http://localhost:8000
-2026-09-03 11:16:41 [INFO] Umnix:  🤖  Бот Umnix успешно запущен и слушает серверы Telegram (Polling)...
-2026-09-03 11:16:41 [INFO] uvicorn.error: Started server process [61711]
-2026-09-03 11:16:41 [INFO] uvicorn.error: Waiting for application startup.
-2026-09-03 11:16:41 [INFO] Umnix: 🚀 Пул соединений с PostgreSQL успешно запущен
-2026-09-03 11:16:41 [INFO] Umnix:  🗄  Пул базы данных PostgreSQL успешно инициализирован.
-2026-09-03 11:16:41 [INFO] uvicorn.error: Application startup complete.
-2026-09-03 11:16:41 [INFO] uvicorn.error: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-2026-09-03 11:16:41 [INFO] Umnix: Textbook digitization worker started
-2026-09-03 11:16:41 [INFO] aiogram.dispatcher: Start polling
-2026-09-03 11:16:41 [INFO] aiogram.dispatcher: Run polling for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 11:16:54 [INFO] uvicorn.access: 127.0.0.1:59464 - "GET /parent.html HTTP/1.1" 200
-2026-09-03 11:16:57 [INFO] uvicorn.access: 127.0.0.1:59464 - "GET /static/js/parent.js?v=20260824-ux-polish-2 HTTP/1.1" 304
-2026-09-03 11:16:57 [INFO] uvicorn.access: 127.0.0.1:59466 - "GET /static/js/chat.js?v=20260824-ux-polish-2 HTTP/1.1" 304
-2026-09-03 11:16:57 [INFO] uvicorn.access: 127.0.0.1:59467 - "GET /static/js/app.js?v=20260825-umnix-2 HTTP/1.1" 304
-2026-09-03 11:16:57 [INFO] uvicorn.access: 127.0.0.1:59465 - "GET /static/css/app.css?v=20260825-umnix-2 HTTP/1.1" 304
-2026-09-03 11:16:58 [INFO] uvicorn.access: 127.0.0.1:59465 - "GET /api/v1/auth/session HTTP/1.1" 200
-2026-09-03 11:17:00 [INFO] uvicorn.access: 127.0.0.1:59465 - "GET /api/v1/parent/dashboard HTTP/1.1" 200
-2026-09-03 11:17:00 [INFO] uvicorn.access: 127.0.0.1:59467 - "GET /api/v1/parent/tasks HTTP/1.1" 200
-2026-09-03 11:17:00 [INFO] uvicorn.access: 127.0.0.1:59467 - "GET /api/v1/tutor/profile HTTP/1.1" 200
-2026-09-03 11:17:00 [INFO] uvicorn.access: 127.0.0.1:59465 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 11:17:00 [INFO] uvicorn.access: 127.0.0.1:59465 - "GET /api/v1/tutor/profile/avatar HTTP/1.1" 401
-2026-09-03 11:17:00 [INFO] uvicorn.access: 127.0.0.1:59466 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 11:17:00 [INFO] uvicorn.access: 127.0.0.1:59467 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 11:17:00 [INFO] uvicorn.access: 127.0.0.1:59467 - "GET /api/v1/tutor/sessions/069280fd-fe32-4891-b11b-594a40efe88f/messages HTTP/1.1" 200
-2026-09-03 11:17:21 [INFO] Umnix: Web tutor request: user=5573274669 session=069280fd-fe32-4891-b11b-594a40efe88f attachment=none
-2026-09-03 11:17:33 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2026-09-03 11:17:33 [INFO] uvicorn.access: 127.0.0.1:59616 - "POST /api/v1/tutor/messages HTTP/1.1" 200
-2026-09-03 11:17:33 [INFO] uvicorn.access: 127.0.0.1:59616 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 11:17:36 [INFO] uvicorn.access: 127.0.0.1:59616 - "GET /interactive/76df3fa3-982b-48b6-a596-fd2c8f4a4df6?version=1 HTTP/1.1" 200
-2026-09-03 11:17:38 [INFO] uvicorn.access: 127.0.0.1:59733 - "GET /static/js/interactive.js?v=20260816-latex-unified-1 HTTP/1.1" 304
-2026-09-03 11:17:38 [INFO] uvicorn.access: 127.0.0.1:59616 - "GET /static/css/interactive.css?v=20260819-mobile-1 HTTP/1.1" 304
-2026-09-03 11:17:39 [INFO] uvicorn.access: 127.0.0.1:59616 - "GET /api/v1/interactive/76df3fa3-982b-48b6-a596-fd2c8f4a4df6?version=1 HTTP/1.1" 200
-2026-09-03 11:19:54 [WARNING] aiogram.dispatcher: Received SIGINT signal
-2026-09-03 11:19:54 [INFO] aiogram.dispatcher: Polling stopped for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 11:19:54 [INFO] aiogram.dispatcher: Polling stopped
-2026-09-03 11:19:54 [INFO] Umnix:  🛑  Остановка сервисов бота...
-2026-09-03 11:19:54 [INFO] uvicorn.error: Shutting down
-2026-09-03 11:19:54 [INFO] uvicorn.error: Waiting for application shutdown.
-2026-09-03 11:19:54 [INFO] Umnix: Textbook digitization worker stopped
-2026-09-03 11:19:54 [INFO] Umnix: 🛑 Пул соединений с PostgreSQL остановлен
-2026-09-03 11:19:54 [INFO] Umnix:  🗄  Пул базы данных закрыт.
-2026-09-03 11:19:54 [INFO] uvicorn.error: Application shutdown complete.
-2026-09-03 11:19:54 [INFO] uvicorn.error: Finished server process [61711]
-2026-09-03 11:19:54 [INFO] Umnix:  👋  Все системы Umnix успешно остановлены.
-2026-09-03 11:20:14 [INFO] Umnix:  🚀  Веб-сервер FastAPI успешно запущен на http://localhost:8000
-2026-09-03 11:20:14 [INFO] Umnix:  🤖  Бот Umnix успешно запущен и слушает серверы Telegram (Polling)...
-2026-09-03 11:20:14 [INFO] uvicorn.error: Started server process [62087]
-2026-09-03 11:20:14 [INFO] uvicorn.error: Waiting for application startup.
-2026-09-03 11:20:15 [INFO] Umnix: 🚀 Пул соединений с PostgreSQL успешно запущен
-2026-09-03 11:20:15 [INFO] Umnix:  🗄  Пул базы данных PostgreSQL успешно инициализирован.
-2026-09-03 11:20:15 [INFO] uvicorn.error: Application startup complete.
-2026-09-03 11:20:15 [INFO] uvicorn.error: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-2026-09-03 11:20:15 [INFO] Umnix: Textbook digitization worker started
-2026-09-03 11:20:15 [INFO] aiogram.dispatcher: Start polling
-2026-09-03 11:20:15 [INFO] aiogram.dispatcher: Run polling for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 11:20:34 [INFO] aiogram.event: Update id=387384880 is handled. Duration 547 ms by bot id=8857494772
-2026-09-03 11:20:54 [INFO] uvicorn.access: 138.124.39.149:0 - "GET / HTTP/1.1" 200
-2026-09-03 11:20:54 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/app.js?v=20260825-umnix-2 HTTP/1.1" 200
-2026-09-03 11:20:54 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/auth.js?v=20260728-1 HTTP/1.1" 200
-2026-09-03 11:20:54 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/css/app.css?v=20260825-umnix-2 HTTP/1.1" 200
-2026-09-03 11:20:55 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/options HTTP/1.1" 200
-2026-09-03 11:21:18 [INFO] uvicorn.access: 138.124.39.149:0 - "GET / HTTP/1.1" 200
-2026-09-03 11:21:18 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/css/app.css?v=20260825-umnix-2 HTTP/1.1" 200
-2026-09-03 11:21:18 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/app.js?v=20260825-umnix-2 HTTP/1.1" 200
-2026-09-03 11:21:18 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/auth.js?v=20260728-1 HTTP/1.1" 200
-2026-09-03 11:21:19 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/options HTTP/1.1" 200
-2026-09-03 11:21:19 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /favicon.ico HTTP/1.1" 404
-2026-09-03 11:21:19 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/session HTTP/1.1" 200
-2026-09-03 11:21:19 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /student.html HTTP/1.1" 200
-2026-09-03 11:21:19 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/student.js?v=20260824-ux-polish-2 HTTP/1.1" 200
-2026-09-03 11:21:19 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/chat.js?v=20260824-ux-polish-2 HTTP/1.1" 200
-2026-09-03 11:21:19 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/session HTTP/1.1" 200
-2026-09-03 11:21:20 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/profile HTTP/1.1" 200
-2026-09-03 11:21:20 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/student/dashboard HTTP/1.1" 200
-2026-09-03 11:21:20 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/profile/avatar HTTP/1.1" 401
-2026-09-03 11:21:20 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 11:21:20 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 11:21:20 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/sessions/3e906777-1410-4c0e-8994-462d71d2de75/messages HTTP/1.1" 200
-2026-09-03 11:21:31 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/student/dashboard HTTP/1.1" 200
-2026-09-03 11:21:37 [INFO] uvicorn.access: 138.124.39.149:0 - "DELETE /api/v1/tutor/sessions/3e906777-1410-4c0e-8994-462d71d2de75/context HTTP/1.1" 200
-2026-09-03 11:21:37 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 11:21:37 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/sessions/3e906777-1410-4c0e-8994-462d71d2de75/messages HTTP/1.1" 200
-2026-09-03 11:21:45 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /auth.html HTTP/1.1" 200
-2026-09-03 11:21:45 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/options HTTP/1.1" 200
-2026-09-03 11:30:12 [WARNING] aiogram.dispatcher: Received SIGINT signal
-2026-09-03 11:30:12 [INFO] aiogram.dispatcher: Polling stopped for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 11:30:12 [INFO] aiogram.dispatcher: Polling stopped
-2026-09-03 11:30:12 [INFO] Umnix:  🛑  Остановка сервисов бота...
-2026-09-03 11:30:12 [INFO] uvicorn.error: Shutting down
-2026-09-03 11:30:12 [INFO] uvicorn.error: Waiting for application shutdown.
-2026-09-03 11:30:12 [INFO] Umnix: Textbook digitization worker stopped
-2026-09-03 11:30:12 [INFO] Umnix: 🛑 Пул соединений с PostgreSQL остановлен
-2026-09-03 11:30:12 [INFO] Umnix:  🗄  Пул базы данных закрыт.
-2026-09-03 11:30:12 [INFO] uvicorn.error: Application shutdown complete.
-2026-09-03 11:30:12 [INFO] uvicorn.error: Finished server process [62087]
-2026-09-03 11:30:12 [INFO] Umnix:  👋  Все системы Umnix успешно остановлены.
-2026-09-03 11:39:29 [INFO] Umnix:  🚀  Веб-сервер FastAPI успешно запущен на http://localhost:8000
-2026-09-03 11:39:29 [INFO] Umnix:  🤖  Бот Umnix успешно запущен и слушает серверы Telegram (Polling)...
-2026-09-03 11:39:29 [INFO] uvicorn.error: Started server process [63315]
-2026-09-03 11:39:29 [INFO] uvicorn.error: Waiting for application startup.
-2026-09-03 11:39:30 [INFO] Umnix: 🚀 Пул соединений с PostgreSQL успешно запущен
-2026-09-03 11:39:30 [INFO] Umnix:  🗄  Пул базы данных PostgreSQL успешно инициализирован.
-2026-09-03 11:39:30 [INFO] uvicorn.error: Application startup complete.
-2026-09-03 11:39:30 [INFO] uvicorn.error: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-2026-09-03 11:39:30 [INFO] Umnix: Textbook digitization worker started
-2026-09-03 11:39:30 [INFO] aiogram.dispatcher: Start polling
-2026-09-03 11:39:30 [INFO] aiogram.dispatcher: Run polling for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 11:39:35 [INFO] uvicorn.access: 138.124.39.149:0 - "GET / HTTP/1.1" 200
-2026-09-03 11:39:35 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/css/app.css?v=20260825-umnix-2 HTTP/1.1" 200
-2026-09-03 11:39:35 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/app.js?v=20260825-umnix-2 HTTP/1.1" 200
-2026-09-03 11:39:35 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/auth.js?v=20260728-1 HTTP/1.1" 200
-2026-09-03 11:39:36 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/options HTTP/1.1" 200
-2026-09-03 11:55:21 [ERROR] aiogram.dispatcher: Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
-2026-09-03 11:55:21 [WARNING] aiogram.dispatcher: Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8857494772)
-2026-09-03 11:55:45 [WARNING] aiogram.dispatcher: Received SIGINT signal
-2026-09-03 11:55:45 [INFO] aiogram.dispatcher: Polling stopped for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 11:55:45 [INFO] aiogram.dispatcher: Polling stopped
-2026-09-03 11:55:46 [INFO] Umnix:  🛑  Остановка сервисов бота...
-2026-09-03 11:55:46 [INFO] uvicorn.error: Shutting down
-2026-09-03 11:55:46 [INFO] uvicorn.error: Waiting for application shutdown.
-2026-09-03 11:55:46 [INFO] Umnix: Textbook digitization worker stopped
-2026-09-03 11:55:46 [INFO] Umnix: 🛑 Пул соединений с PostgreSQL остановлен
-2026-09-03 11:55:46 [INFO] Umnix:  🗄  Пул базы данных закрыт.
-2026-09-03 11:55:46 [INFO] uvicorn.error: Application shutdown complete.
-2026-09-03 11:55:46 [INFO] uvicorn.error: Finished server process [63315]
-2026-09-03 11:55:46 [INFO] Umnix:  👋  Все системы Umnix успешно остановлены.
-2026-09-03 11:55:56 [INFO] Umnix:  🚀  Веб-сервер FastAPI успешно запущен на http://localhost:8000
-2026-09-03 11:55:56 [INFO] Umnix:  🤖  Бот Umnix успешно запущен и слушает серверы Telegram (Polling)...
-2026-09-03 11:55:56 [INFO] uvicorn.error: Started server process [64382]
-2026-09-03 11:55:56 [INFO] uvicorn.error: Waiting for application startup.
-2026-09-03 11:55:57 [INFO] Umnix: 🚀 Пул соединений с PostgreSQL успешно запущен
-2026-09-03 11:55:57 [INFO] Umnix:  🗄  Пул базы данных PostgreSQL успешно инициализирован.
-2026-09-03 11:55:57 [INFO] uvicorn.error: Application startup complete.
-2026-09-03 11:55:57 [INFO] uvicorn.error: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-2026-09-03 11:55:57 [INFO] Umnix: Textbook digitization worker started
-2026-09-03 11:55:57 [INFO] aiogram.dispatcher: Start polling
-2026-09-03 11:55:57 [INFO] aiogram.dispatcher: Run polling for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 11:56:08 [INFO] uvicorn.access: 127.0.0.1:62324 - "GET /parent.html HTTP/1.1" 200
-2026-09-03 11:56:09 [INFO] uvicorn.access: 127.0.0.1:62324 - "GET /static/css/app.css?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 11:56:09 [INFO] uvicorn.access: 127.0.0.1:62325 - "GET /static/js/app.js?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 11:56:09 [INFO] uvicorn.access: 127.0.0.1:62324 - "GET /api/v1/auth/session HTTP/1.1" 200
-2026-09-03 11:56:09 [INFO] uvicorn.access: 127.0.0.1:62324 - "GET /api/v1/parent/dashboard HTTP/1.1" 200
-2026-09-03 11:56:09 [INFO] uvicorn.access: 127.0.0.1:62326 - "GET /api/v1/tutor/profile HTTP/1.1" 200
-2026-09-03 11:56:09 [INFO] uvicorn.access: 127.0.0.1:62325 - "GET /api/v1/parent/tasks HTTP/1.1" 200
-2026-09-03 11:56:09 [INFO] uvicorn.access: 127.0.0.1:62325 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 11:56:09 [INFO] uvicorn.access: 127.0.0.1:62325 - "GET /api/v1/tutor/profile/avatar HTTP/1.1" 401
-2026-09-03 11:56:09 [INFO] uvicorn.access: 127.0.0.1:62326 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 11:56:09 [INFO] uvicorn.access: 127.0.0.1:62325 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 11:56:09 [INFO] uvicorn.access: 127.0.0.1:62325 - "GET /api/v1/tutor/sessions/069280fd-fe32-4891-b11b-594a40efe88f/messages HTTP/1.1" 200
-2026-09-03 11:59:23 [INFO] uvicorn.access: 138.124.39.149:0 - "GET / HTTP/1.1" 200
-2026-09-03 11:59:23 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/css/app.css?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 11:59:23 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/app.js?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 11:59:23 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/auth.js?v=20260903-tgid-1 HTTP/1.1" 200
-2026-09-03 11:59:24 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/options HTTP/1.1" 200
-2026-09-03 12:01:22 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/docs/telegram-id-guide.html HTTP/1.1" 200
-2026-09-03 12:01:23 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/css/app.css?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:01:24 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/docx-guide.js?v=20260903-1 HTTP/1.1" 200
-2026-09-03 12:01:25 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /favicon.ico HTTP/1.1" 404
-2026-09-03 12:01:25 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/docs/telegram_id_guide.docx HTTP/1.1" 404
-2026-09-03 12:01:31 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /auth.html HTTP/1.1" 200
-2026-09-03 12:01:32 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/app.js?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:01:32 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/auth.js?v=20260903-tgid-1 HTTP/1.1" 200
-2026-09-03 12:01:33 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/options HTTP/1.1" 200
-2026-09-03 12:01:55 [WARNING] aiogram.dispatcher: Received SIGINT signal
-2026-09-03 12:01:55 [INFO] aiogram.dispatcher: Polling stopped for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 12:01:55 [INFO] aiogram.dispatcher: Polling stopped
-2026-09-03 12:01:55 [INFO] Umnix:  🛑  Остановка сервисов бота...
-2026-09-03 12:01:55 [INFO] uvicorn.error: Shutting down
-2026-09-03 12:01:55 [INFO] uvicorn.error: Waiting for application shutdown.
-2026-09-03 12:01:55 [INFO] Umnix: Textbook digitization worker stopped
-2026-09-03 12:01:55 [INFO] Umnix: 🛑 Пул соединений с PostgreSQL остановлен
-2026-09-03 12:01:55 [INFO] Umnix:  🗄  Пул базы данных закрыт.
-2026-09-03 12:01:55 [INFO] uvicorn.error: Application shutdown complete.
-2026-09-03 12:01:55 [INFO] uvicorn.error: Finished server process [64382]
-2026-09-03 12:01:55 [INFO] Umnix:  👋  Все системы Umnix успешно остановлены.
-2026-09-03 12:04:21 [INFO] Umnix:  🚀  Веб-сервер FastAPI успешно запущен на http://localhost:8000
-2026-09-03 12:04:21 [INFO] Umnix:  🤖  Бот Umnix успешно запущен и слушает серверы Telegram (Polling)...
-2026-09-03 12:04:21 [INFO] uvicorn.error: Started server process [64939]
-2026-09-03 12:04:21 [INFO] uvicorn.error: Waiting for application startup.
-2026-09-03 12:04:21 [INFO] Umnix: 🚀 Пул соединений с PostgreSQL успешно запущен
-2026-09-03 12:04:21 [INFO] Umnix:  🗄  Пул базы данных PostgreSQL успешно инициализирован.
-2026-09-03 12:04:21 [INFO] uvicorn.error: Application startup complete.
-2026-09-03 12:04:21 [INFO] uvicorn.error: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-2026-09-03 12:04:21 [INFO] Umnix: Textbook digitization worker started
-2026-09-03 12:04:21 [INFO] aiogram.dispatcher: Start polling
-2026-09-03 12:04:21 [INFO] aiogram.dispatcher: Run polling for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 12:04:34 [INFO] uvicorn.access: 138.124.39.149:0 - "GET / HTTP/1.1" 200
-2026-09-03 12:04:34 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/css/app.css?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:04:34 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/auth.js?v=20260903-tgid-1 HTTP/1.1" 200
-2026-09-03 12:04:34 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/app.js?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:04:36 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/options HTTP/1.1" 200
-2026-09-03 12:05:00 [INFO] uvicorn.access: 127.0.0.1:50741 - "GET /api/v1/tutor/profile/avatar HTTP/1.1" 401
-2026-09-03 12:05:01 [INFO] uvicorn.access: 127.0.0.1:50741 - "GET /auth.html HTTP/1.1" 200
-2026-09-03 12:05:02 [INFO] uvicorn.access: 127.0.0.1:50741 - "GET /static/js/auth.js?v=20260903-tgid-1 HTTP/1.1" 200
-2026-09-03 12:05:02 [INFO] uvicorn.access: 127.0.0.1:50746 - "GET /static/css/app.css?v=20260903-frontend-3 HTTP/1.1" 304
-2026-09-03 12:05:02 [INFO] uvicorn.access: 127.0.0.1:50747 - "GET /static/js/app.js?v=20260903-frontend-3 HTTP/1.1" 304
-2026-09-03 12:05:02 [INFO] uvicorn.access: 127.0.0.1:50741 - "GET /api/v1/auth/options HTTP/1.1" 200
-2026-09-03 12:05:03 [INFO] uvicorn.access: 127.0.0.1:50741 - "POST /api/v1/auth/browser-login HTTP/1.1" 200
-2026-09-03 12:05:03 [INFO] uvicorn.access: 127.0.0.1:50741 - "GET /parent.html HTTP/1.1" 200
-2026-09-03 12:05:04 [INFO] uvicorn.access: 127.0.0.1:50741 - "GET /api/v1/auth/session HTTP/1.1" 200
-2026-09-03 12:05:04 [INFO] uvicorn.access: 127.0.0.1:50741 - "GET /api/v1/parent/dashboard HTTP/1.1" 200
-2026-09-03 12:05:04 [INFO] uvicorn.access: 127.0.0.1:50746 - "GET /api/v1/tutor/profile HTTP/1.1" 200
-2026-09-03 12:05:04 [INFO] uvicorn.access: 127.0.0.1:50748 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 12:05:04 [INFO] uvicorn.access: 127.0.0.1:50747 - "GET /api/v1/parent/tasks HTTP/1.1" 200
-2026-09-03 12:05:04 [INFO] uvicorn.access: 127.0.0.1:50747 - "GET /api/v1/tutor/profile/avatar HTTP/1.1" 401
-2026-09-03 12:05:04 [INFO] uvicorn.access: 127.0.0.1:50746 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 12:05:04 [INFO] uvicorn.access: 127.0.0.1:50748 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 12:05:04 [INFO] uvicorn.access: 127.0.0.1:50748 - "GET /api/v1/tutor/sessions/069280fd-fe32-4891-b11b-594a40efe88f/messages HTTP/1.1" 200
-2026-09-03 12:05:12 [INFO] aiogram.event: Update id=387384881 is handled. Duration 596 ms by bot id=8857494772
-2026-09-03 12:05:13 [INFO] uvicorn.access: 138.124.39.149:0 - "GET / HTTP/1.1" 200
-2026-09-03 12:05:13 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/css/app.css?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:05:13 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/app.js?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:05:13 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/auth.js?v=20260903-tgid-1 HTTP/1.1" 200
-2026-09-03 12:05:14 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/options HTTP/1.1" 200
-2026-09-03 12:08:30 [WARNING] aiogram.dispatcher: Received SIGINT signal
-2026-09-03 12:08:30 [INFO] aiogram.dispatcher: Polling stopped for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 12:08:30 [INFO] aiogram.dispatcher: Polling stopped
-2026-09-03 12:08:30 [INFO] Umnix:  🛑  Остановка сервисов бота...
-2026-09-03 12:08:30 [INFO] uvicorn.error: Shutting down
-2026-09-03 12:08:30 [INFO] uvicorn.error: Waiting for application shutdown.
-2026-09-03 12:08:30 [INFO] Umnix: Textbook digitization worker stopped
-2026-09-03 12:08:30 [INFO] Umnix: 🛑 Пул соединений с PostgreSQL остановлен
-2026-09-03 12:08:30 [INFO] Umnix:  🗄  Пул базы данных закрыт.
-2026-09-03 12:08:30 [INFO] uvicorn.error: Application shutdown complete.
-2026-09-03 12:08:30 [INFO] uvicorn.error: Finished server process [64939]
-2026-09-03 12:08:30 [INFO] Umnix:  👋  Все системы Umnix успешно остановлены.
-2026-09-03 12:11:17 [INFO] Umnix:  🚀  Веб-сервер FastAPI успешно запущен на http://localhost:8000
-2026-09-03 12:11:17 [INFO] Umnix:  🤖  Бот Umnix успешно запущен и слушает серверы Telegram (Polling)...
-2026-09-03 12:11:17 [INFO] uvicorn.error: Started server process [65449]
-2026-09-03 12:11:17 [INFO] uvicorn.error: Waiting for application startup.
-2026-09-03 12:11:17 [INFO] Umnix: 🚀 Пул соединений с PostgreSQL успешно запущен
-2026-09-03 12:11:17 [INFO] Umnix:  🗄  Пул базы данных PostgreSQL успешно инициализирован.
-2026-09-03 12:11:17 [INFO] uvicorn.error: Application startup complete.
-2026-09-03 12:11:17 [INFO] uvicorn.error: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-2026-09-03 12:11:17 [INFO] Umnix: Textbook digitization worker started
-2026-09-03 12:11:18 [INFO] aiogram.dispatcher: Start polling
-2026-09-03 12:11:18 [INFO] aiogram.dispatcher: Run polling for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 12:11:21 [INFO] uvicorn.access: 127.0.0.1:53347 - "GET /parent.html HTTP/1.1" 200
-2026-09-03 12:11:21 [INFO] uvicorn.access: 127.0.0.1:53347 - "GET /static/css/app.css?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:11:21 [INFO] uvicorn.access: 127.0.0.1:53348 - "GET /static/js/app.js?v=20260903-frontend-3 HTTP/1.1" 304
-2026-09-03 12:11:21 [INFO] uvicorn.access: 127.0.0.1:53347 - "GET /api/v1/auth/session HTTP/1.1" 200
-2026-09-03 12:11:21 [INFO] uvicorn.access: 127.0.0.1:53347 - "GET /api/v1/parent/dashboard HTTP/1.1" 200
-2026-09-03 12:11:21 [INFO] uvicorn.access: 127.0.0.1:53350 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 12:11:21 [INFO] uvicorn.access: 127.0.0.1:53349 - "GET /api/v1/tutor/profile HTTP/1.1" 200
-2026-09-03 12:11:21 [INFO] uvicorn.access: 127.0.0.1:53348 - "GET /api/v1/parent/tasks HTTP/1.1" 200
-2026-09-03 12:11:21 [INFO] uvicorn.access: 127.0.0.1:53349 - "GET /api/v1/tutor/profile/avatar HTTP/1.1" 401
-2026-09-03 12:11:21 [INFO] uvicorn.access: 127.0.0.1:53347 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 12:11:21 [INFO] uvicorn.access: 127.0.0.1:53350 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 12:11:21 [INFO] uvicorn.access: 127.0.0.1:53350 - "GET /api/v1/tutor/sessions/069280fd-fe32-4891-b11b-594a40efe88f/messages HTTP/1.1" 200
-2026-09-03 12:11:47 [WARNING] aiogram.dispatcher: Received SIGINT signal
-2026-09-03 12:11:47 [INFO] aiogram.dispatcher: Polling stopped for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 12:11:47 [INFO] aiogram.dispatcher: Polling stopped
-2026-09-03 12:11:47 [INFO] Umnix:  🛑  Остановка сервисов бота...
-2026-09-03 12:11:47 [INFO] uvicorn.error: Shutting down
-2026-09-03 12:11:47 [INFO] uvicorn.error: Waiting for application shutdown.
-2026-09-03 12:11:47 [INFO] Umnix: Textbook digitization worker stopped
-2026-09-03 12:11:47 [INFO] Umnix: 🛑 Пул соединений с PostgreSQL остановлен
-2026-09-03 12:11:47 [INFO] Umnix:  🗄  Пул базы данных закрыт.
-2026-09-03 12:11:47 [INFO] uvicorn.error: Application shutdown complete.
-2026-09-03 12:11:47 [INFO] uvicorn.error: Finished server process [65449]
-2026-09-03 12:11:47 [INFO] Umnix:  👋  Все системы Umnix успешно остановлены.
-2026-09-03 12:13:57 [INFO] Umnix:  🚀  Веб-сервер FastAPI успешно запущен на http://localhost:8000
-2026-09-03 12:13:57 [INFO] Umnix:  🤖  Бот Umnix успешно запущен и слушает серверы Telegram (Polling)...
-2026-09-03 12:13:57 [INFO] uvicorn.error: Started server process [65740]
-2026-09-03 12:13:57 [INFO] uvicorn.error: Waiting for application startup.
-2026-09-03 12:13:57 [INFO] Umnix: 🚀 Пул соединений с PostgreSQL успешно запущен
-2026-09-03 12:13:57 [INFO] Umnix:  🗄  Пул базы данных PostgreSQL успешно инициализирован.
-2026-09-03 12:13:57 [INFO] uvicorn.error: Application startup complete.
-2026-09-03 12:13:57 [INFO] uvicorn.error: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-2026-09-03 12:13:57 [INFO] Umnix: Textbook digitization worker started
-2026-09-03 12:13:57 [INFO] aiogram.dispatcher: Start polling
-2026-09-03 12:13:57 [INFO] aiogram.dispatcher: Run polling for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 12:14:02 [INFO] uvicorn.access: 127.0.0.1:55723 - "GET /parent.html HTTP/1.1" 200
-2026-09-03 12:14:02 [INFO] uvicorn.access: 127.0.0.1:55723 - "GET /static/css/app.css?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:14:02 [INFO] uvicorn.access: 127.0.0.1:55724 - "GET /static/js/app.js?v=20260903-frontend-3 HTTP/1.1" 304
-2026-09-03 12:14:02 [INFO] uvicorn.access: 127.0.0.1:55723 - "GET /api/v1/auth/session HTTP/1.1" 200
-2026-09-03 12:14:02 [INFO] uvicorn.access: 127.0.0.1:55723 - "GET /api/v1/parent/dashboard HTTP/1.1" 200
-2026-09-03 12:14:02 [INFO] uvicorn.access: 127.0.0.1:55725 - "GET /api/v1/tutor/profile HTTP/1.1" 200
-2026-09-03 12:14:02 [INFO] uvicorn.access: 127.0.0.1:55726 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 12:14:02 [INFO] uvicorn.access: 127.0.0.1:55726 - "GET /api/v1/tutor/profile/avatar HTTP/1.1" 401
-2026-09-03 12:14:02 [INFO] uvicorn.access: 127.0.0.1:55724 - "GET /api/v1/parent/tasks HTTP/1.1" 200
-2026-09-03 12:14:02 [INFO] uvicorn.access: 127.0.0.1:55723 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 12:14:02 [INFO] uvicorn.access: 127.0.0.1:55725 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 12:14:02 [INFO] uvicorn.access: 127.0.0.1:55725 - "GET /api/v1/tutor/sessions/069280fd-fe32-4891-b11b-594a40efe88f/messages HTTP/1.1" 200
-2026-09-03 12:14:19 [INFO] uvicorn.access: 138.124.39.149:0 - "GET / HTTP/1.1" 200
-2026-09-03 12:14:19 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/css/app.css?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:14:19 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/app.js?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:14:19 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/auth.js?v=20260903-mobile-auth-2 HTTP/1.1" 200
-2026-09-03 12:14:20 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/options HTTP/1.1" 200
-2026-09-03 12:14:32 [INFO] aiogram.event: Update id=387384882 is handled. Duration 430 ms by bot id=8857494772
-2026-09-03 12:14:33 [INFO] uvicorn.access: 138.124.39.149:0 - "GET / HTTP/1.1" 200
-2026-09-03 12:14:33 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/app.js?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:14:33 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/css/app.css?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:14:33 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/auth.js?v=20260903-mobile-auth-2 HTTP/1.1" 200
-2026-09-03 12:14:34 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/options HTTP/1.1" 200
-2026-09-03 12:14:58 [INFO] uvicorn.access: 138.124.39.149:0 - "GET / HTTP/1.1" 200
-2026-09-03 12:14:58 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/css/app.css?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:14:58 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/app.js?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:14:58 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/auth.js?v=20260903-mobile-auth-2 HTTP/1.1" 200
-2026-09-03 12:14:59 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/options HTTP/1.1" 200
-2026-09-03 12:17:00 [WARNING] aiogram.dispatcher: Received SIGINT signal
-2026-09-03 12:17:00 [INFO] aiogram.dispatcher: Polling stopped for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 12:17:00 [INFO] aiogram.dispatcher: Polling stopped
-2026-09-03 12:17:01 [INFO] Umnix:  🛑  Остановка сервисов бота...
-2026-09-03 12:17:01 [INFO] uvicorn.error: Shutting down
-2026-09-03 12:17:01 [INFO] uvicorn.error: Waiting for application shutdown.
-2026-09-03 12:17:01 [INFO] Umnix: Textbook digitization worker stopped
-2026-09-03 12:17:01 [INFO] Umnix: 🛑 Пул соединений с PostgreSQL остановлен
-2026-09-03 12:17:01 [INFO] Umnix:  🗄  Пул базы данных закрыт.
-2026-09-03 12:17:01 [INFO] uvicorn.error: Application shutdown complete.
-2026-09-03 12:17:01 [INFO] uvicorn.error: Finished server process [65740]
-2026-09-03 12:17:01 [INFO] Umnix:  👋  Все системы Umnix успешно остановлены.
-2026-09-03 12:20:21 [INFO] Umnix:  🚀  Веб-сервер FastAPI успешно запущен на http://localhost:8000
-2026-09-03 12:20:21 [INFO] Umnix:  🤖  Бот Umnix успешно запущен и слушает серверы Telegram (Polling)...
-2026-09-03 12:20:21 [INFO] uvicorn.error: Started server process [66336]
-2026-09-03 12:20:21 [INFO] uvicorn.error: Waiting for application startup.
-2026-09-03 12:20:21 [INFO] Umnix: 🚀 Пул соединений с PostgreSQL успешно запущен
-2026-09-03 12:20:21 [INFO] Umnix:  🗄  Пул базы данных PostgreSQL успешно инициализирован.
-2026-09-03 12:20:21 [INFO] uvicorn.error: Application startup complete.
-2026-09-03 12:20:21 [INFO] uvicorn.error: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-2026-09-03 12:20:21 [INFO] Umnix: Textbook digitization worker started
-2026-09-03 12:20:22 [INFO] aiogram.dispatcher: Start polling
-2026-09-03 12:20:22 [INFO] aiogram.dispatcher: Run polling for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 12:20:36 [INFO] uvicorn.access: 138.124.39.149:0 - "GET / HTTP/1.1" 200
-2026-09-03 12:20:37 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/css/app.css?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:20:37 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/app.js?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:20:37 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/auth.js?v=20260903-mobile-auth-3 HTTP/1.1" 200
-2026-09-03 12:20:38 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/options HTTP/1.1" 200
-2026-09-03 12:21:06 [INFO] uvicorn.access: 138.124.39.149:0 - "POST /api/v1/auth/browser-login HTTP/1.1" 200
-2026-09-03 12:21:07 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /parent.html HTTP/1.1" 200
-2026-09-03 12:21:07 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/parent.js?v=20260824-ux-polish-2 HTTP/1.1" 200
-2026-09-03 12:21:07 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/chat.js?v=20260824-ux-polish-2 HTTP/1.1" 200
-2026-09-03 12:21:07 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/session HTTP/1.1" 200
-2026-09-03 12:21:07 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/parent/dashboard HTTP/1.1" 200
-2026-09-03 12:21:07 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/profile HTTP/1.1" 200
-2026-09-03 12:21:07 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 12:21:07 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/parent/tasks HTTP/1.1" 200
-2026-09-03 12:21:07 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/profile/avatar HTTP/1.1" 401
-2026-09-03 12:21:07 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 12:21:07 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 12:21:07 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/sessions/069280fd-fe32-4891-b11b-594a40efe88f/messages HTTP/1.1" 200
-2026-09-03 12:21:24 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /parent.html HTTP/1.1" 200
-2026-09-03 12:21:24 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/css/app.css?v=20260903-frontend-3 HTTP/1.1" 304
-2026-09-03 12:21:24 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/app.js?v=20260903-frontend-3 HTTP/1.1" 304
-2026-09-03 12:21:24 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/parent.js?v=20260824-ux-polish-2 HTTP/1.1" 304
-2026-09-03 12:21:24 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/chat.js?v=20260824-ux-polish-2 HTTP/1.1" 304
-2026-09-03 12:21:24 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/session HTTP/1.1" 200
-2026-09-03 12:21:24 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/profile HTTP/1.1" 200
-2026-09-03 12:21:24 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/parent/dashboard HTTP/1.1" 200
-2026-09-03 12:21:24 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 12:21:24 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/parent/tasks HTTP/1.1" 200
-2026-09-03 12:21:24 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/profile/avatar HTTP/1.1" 401
-2026-09-03 12:21:24 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 12:21:24 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 12:21:24 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/sessions/069280fd-fe32-4891-b11b-594a40efe88f/messages HTTP/1.1" 200
-2026-09-03 12:21:31 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/sessions/8ae3ff59-f5a1-4f50-a737-c9971c83d4e5/messages HTTP/1.1" 200
-2026-09-03 12:21:35 [INFO] uvicorn.access: 138.124.39.149:0 - "POST /api/v1/tutor/sessions HTTP/1.1" 201
-2026-09-03 12:21:35 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 12:21:35 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/sessions/a4d0e261-3baf-4086-8e5b-e406ddf419f1/messages HTTP/1.1" 200
-2026-09-03 12:21:42 [INFO] aiogram.event: Update id=387384883 is handled. Duration 838 ms by bot id=8857494772
-2026-09-03 12:22:13 [INFO] Umnix: Telegram tutor request: user=5573274669 type=document
-2026-09-03 12:22:39 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2026-09-03 12:22:40 [INFO] aiogram.event: Update id=387384884 is handled. Duration 26720 ms by bot id=8857494772
-2026-09-03 12:23:19 [INFO] Umnix: Telegram tutor request: user=5573274669 type=document
-2026-09-03 12:23:25 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2026-09-03 12:23:25 [INFO] aiogram.event: Update id=387384885 is handled. Duration 5775 ms by bot id=8857494772
-2026-09-03 12:23:41 [INFO] uvicorn.access: 127.0.0.1:59719 - "GET /parent.html HTTP/1.1" 200
-2026-09-03 12:23:41 [INFO] uvicorn.access: 127.0.0.1:59719 - "GET /static/css/app.css?v=20260903-frontend-3 HTTP/1.1" 304
-2026-09-03 12:23:41 [INFO] uvicorn.access: 127.0.0.1:59726 - "GET /static/js/app.js?v=20260903-frontend-3 HTTP/1.1" 304
-2026-09-03 12:23:41 [INFO] uvicorn.access: 127.0.0.1:59726 - "GET /api/v1/auth/session HTTP/1.1" 200
-2026-09-03 12:23:41 [INFO] uvicorn.access: 127.0.0.1:59745 - "GET /api/v1/tutor/profile HTTP/1.1" 200
-2026-09-03 12:23:41 [INFO] uvicorn.access: 127.0.0.1:59726 - "GET /api/v1/parent/dashboard HTTP/1.1" 200
-2026-09-03 12:23:41 [INFO] uvicorn.access: 127.0.0.1:59746 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 12:23:41 [INFO] uvicorn.access: 127.0.0.1:59719 - "GET /api/v1/parent/tasks HTTP/1.1" 200
-2026-09-03 12:23:41 [INFO] uvicorn.access: 127.0.0.1:59719 - "GET /api/v1/tutor/profile/avatar HTTP/1.1" 401
-2026-09-03 12:23:41 [INFO] uvicorn.access: 127.0.0.1:59726 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 12:23:41 [INFO] uvicorn.access: 127.0.0.1:59746 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 12:23:41 [INFO] uvicorn.access: 127.0.0.1:59746 - "GET /api/v1/tutor/sessions/52460a41-067e-42a3-ac96-0e941ccb4cf1/messages HTTP/1.1" 200
-2026-09-03 12:25:20 [WARNING] aiogram.dispatcher: Received SIGINT signal
-2026-09-03 12:25:20 [INFO] aiogram.dispatcher: Polling stopped for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 12:25:20 [INFO] aiogram.dispatcher: Polling stopped
-2026-09-03 12:25:20 [INFO] Umnix:  🛑  Остановка сервисов бота...
-2026-09-03 12:25:20 [INFO] uvicorn.error: Shutting down
-2026-09-03 12:25:20 [INFO] uvicorn.error: Waiting for application shutdown.
-2026-09-03 12:25:20 [INFO] Umnix: Textbook digitization worker stopped
-2026-09-03 12:25:20 [INFO] Umnix: 🛑 Пул соединений с PostgreSQL остановлен
-2026-09-03 12:25:20 [INFO] Umnix:  🗄  Пул базы данных закрыт.
-2026-09-03 12:25:20 [INFO] uvicorn.error: Application shutdown complete.
-2026-09-03 12:25:20 [INFO] uvicorn.error: Finished server process [66336]
-2026-09-03 12:25:20 [INFO] Umnix:  👋  Все системы Umnix успешно остановлены.
-2026-09-03 12:26:53 [INFO] Umnix:  🚀  Веб-сервер FastAPI успешно запущен на http://localhost:8000
-2026-09-03 12:26:53 [INFO] Umnix:  🤖  Бот Umnix успешно запущен и слушает серверы Telegram (Polling)...
-2026-09-03 12:26:53 [INFO] uvicorn.error: Started server process [66898]
-2026-09-03 12:26:53 [INFO] uvicorn.error: Waiting for application startup.
-2026-09-03 12:26:53 [INFO] Umnix: 🚀 Пул соединений с PostgreSQL успешно запущен
-2026-09-03 12:26:53 [INFO] Umnix:  🗄  Пул базы данных PostgreSQL успешно инициализирован.
-2026-09-03 12:26:53 [INFO] uvicorn.error: Application startup complete.
-2026-09-03 12:26:53 [INFO] uvicorn.error: Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-2026-09-03 12:26:53 [INFO] Umnix: Textbook digitization worker started
-2026-09-03 12:26:53 [INFO] aiogram.dispatcher: Start polling
-2026-09-03 12:26:53 [INFO] aiogram.dispatcher: Run polling for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 12:27:00 [INFO] uvicorn.access: 138.124.39.149:0 - "GET / HTTP/1.1" 200
-2026-09-03 12:27:00 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/css/app.css?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:27:00 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/auth.js?v=20260903-mobile-auth-3 HTTP/1.1" 200
-2026-09-03 12:27:00 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/app.js?v=20260903-frontend-3 HTTP/1.1" 200
-2026-09-03 12:27:01 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/options HTTP/1.1" 200
-2026-09-03 12:27:01 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /favicon.ico HTTP/1.1" 404
-2026-09-03 12:27:22 [INFO] uvicorn.access: 127.0.0.1:62391 - "GET /auth.html HTTP/1.1" 200
-2026-09-03 12:27:22 [INFO] uvicorn.access: 127.0.0.1:62391 - "GET /static/js/auth.js?v=20260903-mobile-auth-3 HTTP/1.1" 200
-2026-09-03 12:27:22 [INFO] uvicorn.access: 127.0.0.1:62393 - "GET /static/js/app.js?v=20260903-frontend-3 HTTP/1.1" 304
-2026-09-03 12:27:22 [INFO] uvicorn.access: 127.0.0.1:62392 - "GET /static/css/app.css?v=20260903-frontend-3 HTTP/1.1" 304
-2026-09-03 12:27:22 [INFO] uvicorn.access: 127.0.0.1:62391 - "GET /api/v1/auth/options HTTP/1.1" 200
-2026-09-03 12:27:38 [INFO] uvicorn.access: 127.0.0.1:62523 - "GET /auth.html HTTP/1.1" 200
-2026-09-03 12:27:38 [INFO] uvicorn.access: 127.0.0.1:62523 - "GET /api/v1/auth/options HTTP/1.1" 200
-2026-09-03 12:27:47 [INFO] uvicorn.access: 138.124.39.149:0 - "GET / HTTP/1.1" 200
-2026-09-03 12:27:47 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/options HTTP/1.1" 200
-2026-09-03 12:27:47 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /favicon.ico HTTP/1.1" 404
-2026-09-03 12:28:31 [INFO] uvicorn.access: 138.124.39.149:0 - "POST /api/v1/auth/browser-login HTTP/1.1" 200
-2026-09-03 12:28:32 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /parent.html HTTP/1.1" 200
-2026-09-03 12:28:32 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/css/app.css?v=20260903-frontend-3 HTTP/1.1" 304
-2026-09-03 12:28:32 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /static/js/parent.js?v=20260824-ux-polish-2 HTTP/1.1" 200
-2026-09-03 12:28:32 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/auth/session HTTP/1.1" 200
-2026-09-03 12:28:32 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/profile HTTP/1.1" 200
-2026-09-03 12:28:32 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 12:28:32 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/parent/dashboard HTTP/1.1" 200
-2026-09-03 12:28:32 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/parent/tasks HTTP/1.1" 200
-2026-09-03 12:28:33 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/profile/avatar HTTP/1.1" 401
-2026-09-03 12:28:33 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/context/classes HTTP/1.1" 200
-2026-09-03 12:28:33 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/sessions HTTP/1.1" 200
-2026-09-03 12:28:33 [INFO] uvicorn.access: 138.124.39.149:0 - "GET /api/v1/tutor/sessions/52460a41-067e-42a3-ac96-0e941ccb4cf1/messages HTTP/1.1" 200
-2026-09-03 12:30:14 [INFO] aiogram.event: Update id=387384886 is handled. Duration 411 ms by bot id=8857494772
-2026-09-03 12:30:18 [INFO] aiogram.event: Update id=387384887 is handled. Duration 341 ms by bot id=8857494772
-2026-09-03 12:30:44 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2026-09-03 12:30:44 [INFO] aiogram.event: Update id=387384888 is handled. Duration 18041 ms by bot id=8857494772
-2026-09-03 12:31:18 [INFO] aiogram.event: Update id=387384889 is handled. Duration 95 ms by bot id=8857494772
-2026-09-03 12:31:20 [INFO] aiogram.event: Update id=387384890 is handled. Duration 158 ms by bot id=8857494772
-2026-09-03 12:31:22 [INFO] aiogram.event: Update id=387384891 is handled. Duration 317 ms by bot id=8857494772
-2026-09-03 12:31:27 [INFO] aiogram.event: Update id=387384892 is handled. Duration 350 ms by bot id=8857494772
-2026-09-03 12:31:46 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
-2026-09-03 12:31:46 [INFO] aiogram.event: Update id=387384893 is handled. Duration 7672 ms by bot id=8857494772
-2026-09-03 12:31:59 [INFO] aiogram.event: Update id=387384894 is handled. Duration 222 ms by bot id=8857494772
-2026-09-03 12:32:08 [INFO] httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
-2026-09-03 12:32:09 [INFO] aiogram.event: Update id=387384895 is handled. Duration 6587 ms by bot id=8857494772
-2026-09-03 12:32:21 [WARNING] aiogram.dispatcher: Received SIGINT signal
-2026-09-03 12:32:21 [INFO] aiogram.dispatcher: Polling stopped for bot @EduAI_platform_bot id=8857494772 - 'Umnix 🏫'
-2026-09-03 12:32:21 [INFO] aiogram.dispatcher: Polling stopped
-2026-09-03 12:32:21 [INFO] Umnix:  🛑  Остановка сервисов бота...
-2026-09-03 12:32:22 [INFO] uvicorn.error: Shutting down
-2026-09-03 12:32:22 [INFO] uvicorn.error: Waiting for application shutdown.
-2026-09-03 12:32:22 [INFO] Umnix: Textbook digitization worker stopped
-2026-09-03 12:32:22 [INFO] Umnix: 🛑 Пул соединений с PostgreSQL остановлен
-2026-09-03 12:32:22 [INFO] Umnix:  🗄  Пул базы данных закрыт.
-2026-09-03 12:32:22 [INFO] uvicorn.error: Application shutdown complete.
-2026-09-03 12:32:22 [INFO] uvicorn.error: Finished server process [66898]
-2026-09-03 12:32:22 [INFO] Umnix:  👋  Все системы Umnix успешно остановлены.
+2026-09-08 13:32:30 [CRITICAL] database_connect_failed error=OSError
+2026-09-08 13:45:04 [INFO] database_connected
+2026-09-08 13:45:04 [INFO] runtime_schema_ready
+2026-09-08 13:45:04 [INFO] application_started
+2026-09-08 13:45:04 [INFO] digitization_worker_started
+2026-09-08 13:46:12 [INFO] digitization_worker_stopped
+2026-09-08 13:46:12 [INFO] database_disconnected
+2026-09-08 13:46:12 [INFO] application_stopped
+2026-09-09 08:16:45 [CRITICAL] database_connect_failed error=OSError
+2026-09-09 08:16:59 [INFO] database_connected
+2026-09-09 08:16:59 [INFO] runtime_schema_ready
+2026-09-09 08:16:59 [INFO] application_started
+2026-09-09 08:16:59 [INFO] digitization_worker_started
+2026-09-09 08:18:58 [INFO] activity tg_id=5573274669 source=telegram action=login detail=Вход в Telegram-бот
+2026-09-09 08:19:10 [INFO] digitization_worker_stopped
+2026-09-09 08:19:10 [INFO] database_disconnected
+2026-09-09 08:19:10 [INFO] application_stopped
+2026-09-09 08:33:50 [INFO] database_connected
+2026-09-09 08:33:50 [INFO] runtime_schema_ready
+2026-09-09 08:33:50 [INFO] application_started
+2026-09-09 08:33:50 [INFO] digitization_worker_started
+2026-09-09 09:30:00 [INFO] digitization_worker_stopped
+2026-09-09 09:30:00 [INFO] database_disconnected
+2026-09-09 09:30:00 [INFO] application_stopped
+2026-09-09 09:30:12 [INFO] database_connected
+2026-09-09 09:30:12 [INFO] runtime_schema_ready
+2026-09-09 09:30:12 [INFO] application_started
+2026-09-09 09:30:12 [INFO] digitization_worker_started
+09.09.26_09.30.17_anonymous_[200 OK]_HTTP GET request completed_main.py:86
+2026-09-09 09:33:20 [INFO] digitization_worker_stopped
+2026-09-09 09:33:20 [INFO] database_disconnected
+2026-09-09 09:33:20 [INFO] application_stopped
+2026-09-09 09:41:15 [INFO] database_connected
+2026-09-09 09:41:15 [INFO] runtime_schema_ready
+2026-09-09 09:41:15 [INFO] application_started
+2026-09-09 09:41:15 [INFO] digitization_worker_started
+09.09.26_09.41.21_anonymous_[200 OK]_HTTP GET request completed_main.py:86
+09.09.26_09.41.27_5573274669_[200 OK]_Telegram ID login completed_backend/api/auth_router.py:98
+09.09.26_09.41.27_anonymous_[200 OK]_HTTP GET request completed_main.py:101
+09.09.26_09.41.27_5573274669_[200 OK]_Saved session validated_backend/api/auth_router.py:176
+09.09.26_09.41.28_5573274669_[200 OK]_HTTP GET request completed_backend/api/teacher_router.py:287
+09.09.26_09.41.28_5573274669_[200 OK]_HTTP GET request completed_backend/api/chat_router.py:334
+09.09.26_09.41.28_5573274669_[200 OK]_HTTP GET request completed_backend/api/teacher_router.py:985
+09.09.26_09.41.28_5573274669_[200 OK]_HTTP GET request completed_backend/api/chat_router.py:71
+09.09.26_09.41.28_anonymous_[401 Unauthorized]_HTTP GET request was rejected_backend/api/chat_router.py:94
+09.09.26_09.41.28_5573274669_[200 OK]_HTTP GET request completed_backend/api/chat_router.py:334
+09.09.26_09.41.28_5573274669_[200 OK]_HTTP GET request completed_backend/api/chat_router.py:110
+09.09.26_09.41.28_5573274669_[200 OK]_HTTP GET request completed_backend/api/chat_router.py:154
+09.09.26_09.41.38_anonymous_[200 OK]_HTTP GET request completed_main.py:109
+09.09.26_09.41.39_5573274669_[200 OK]_Saved session validated_backend/api/auth_router.py:176
+09.09.26_09.41.39_5573274669_[200 OK]_HTTP GET request completed_backend/api/digitization_router.py:276
+09.09.26_09.41.39_5573274669_[200 OK]_HTTP GET request completed_backend/api/admin_router.py:222
+09.09.26_09.41.39_5573274669_[200 OK]_HTTP GET request completed_backend/api/admin_router.py:36
+09.09.26_09.41.39_5573274669_[200 OK]_HTTP GET request completed_backend/api/admin_router.py:19
+09.09.26_09.41.39_5573274669_[200 OK]_HTTP GET request completed_backend/api/admin_router.py:249
+09.09.26_09.41.39_5573274669_[200 OK]_HTTP GET request completed_backend/api/admin_router.py:292
+09.09.26_09.41.43_5573274669_[200 OK]_HTTP GET request completed_backend/api/digitization_router.py:276
+09.09.26_09.41.47_5573274669_[200 OK]_HTTP GET request completed_backend/api/digitization_router.py:276
+09.09.26_09.41.51_5573274669_[200 OK]_HTTP GET request completed_backend/api/digitization_router.py:276
+09.09.26_09.41.55_5573274669_[200 OK]_HTTP GET request completed_backend/api/digitization_router.py:276
+09.09.26_09.41.59_5573274669_[200 OK]_HTTP GET request completed_backend/api/digitization_router.py:276
+09.09.26_09.42.03_5573274669_[200 OK]_HTTP GET request completed_backend/api/digitization_router.py:276
+09.09.26_09.42.03_5573274669_[200 OK]_HTTP GET request completed_backend/api/admin_router.py:292
+09.09.26_09.42.06_5573274669_[200 OK]_HTTP GET request completed_backend/api/admin_router.py:292
+09.09.26_09.42.07_5573274669_[200 OK]_HTTP GET request completed_backend/api/digitization_router.py:276
+09.09.26_09.42.11_5573274669_[200 OK]_HTTP GET request completed_backend/api/digitization_router.py:276
+09.09.26_09.42.14_5573274669_[200 OK]_HTTP GET request completed_backend/api/admin_router.py:292
+09.09.26_09.42.15_5573274669_[200 OK]_HTTP GET request completed_backend/api/digitization_router.py:276
+09.09.26_09.42.19_5573274669_[200 OK]_HTTP GET request completed_backend/api/digitization_router.py:276
+09.09.26_09.42.20_5573274669_[200 OK]_HTTP GET request completed_backend/api/admin_router.py:292
+09.09.26_09.42.21_5573274669_[200 OK]_HTTP GET request completed_backend/api/admin_router.py:292
+09.09.26_09.42.23_5573274669_[200 OK]_HTTP GET request completed_backend/api/digitization_router.py:276
+09.09.26_09.42.27_5573274669_[200 OK]_HTTP GET request completed_backend/api/digitization_router.py:276
+09.09.26_09.42.31_5573274669_[200 OK]_HTTP GET request completed_backend/api/digitization_router.py:276
+09.09.26_09.42.33_anonymous_[200 OK]_HTTP GET request completed_main.py:101
+09.09.26_09.42.33_5573274669_[200 OK]_Saved session validated_backend/api/auth_router.py:176
+09.09.26_09.42.33_5573274669_[200 OK]_HTTP GET request completed_backend/api/chat_router.py:71
+09.09.26_09.42.33_5573274669_[200 OK]_HTTP GET request completed_backend/api/chat_router.py:334
+09.09.26_09.42.33_5573274669_[200 OK]_HTTP GET request completed_backend/api/teacher_router.py:287
+09.09.26_09.42.33_anonymous_[401 Unauthorized]_HTTP GET request was rejected_backend/api/chat_router.py:94
+09.09.26_09.42.33_5573274669_[200 OK]_HTTP GET request completed_backend/api/chat_router.py:334
+09.09.26_09.42.33_5573274669_[200 OK]_HTTP GET request completed_backend/api/teacher_router.py:985
+09.09.26_09.42.33_5573274669_[200 OK]_HTTP GET request completed_backend/api/chat_router.py:110
+09.09.26_09.42.33_5573274669_[200 OK]_HTTP GET request completed_backend/api/chat_router.py:154
+09.09.26_09.42.38_anonymous_[401 Unauthorized]_HTTP GET request was rejected_backend/api/chat_router.py:94
+09.09.26_09.42.51_anonymous_[401 Unauthorized]_HTTP GET request was rejected_backend/api/chat_router.py:94
+09.09.26_09.43.22_5573274669_[200 OK]_HTTP POST request completed_backend/api/chat_router.py:245
+09.09.26_09.43.22_5573274669_[200 OK]_HTTP GET request completed_backend/api/chat_router.py:110
+09.09.26_09.43.24_anonymous_[200 OK]_HTTP GET request completed_main.py:121
+09.09.26_09.43.26_5573274669_[200 OK]_HTTP GET request completed_backend/api/interactive_router.py:101
+2026-09-09 09:43:40 [INFO] digitization_worker_stopped
+2026-09-09 09:43:40 [INFO] database_disconnected
+2026-09-09 09:43:40 [INFO] application_stopped

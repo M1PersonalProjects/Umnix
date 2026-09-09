@@ -1,47 +1,52 @@
 import asyncio
 import sys
-from pathlib import Path
 from contextlib import asynccontextmanager
+from pathlib import Path
+
 import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
-from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from aiogram import Bot, Dispatcher
+from fastapi.templating import Jinja2Templates
+
+from backend.api.attachment_router import router as attachment_router
+from backend.api.admin_router import router as admin_router
+from backend.api.student_router import router as student_router
+from backend.api.teacher_router import router as teacher_router
+from backend.api.auth_router import router as auth_router
+from backend.api.book_router import router as book_router
+from backend.api.chat_router import router as chat_router
+from backend.api.digitization_router import router as digitization_router
+from backend.api.interactive_router import router as interactive_router
+from backend.bot.bot_instance import bot, dp
+from backend.digitization_books.queue import start_digitization_worker, stop_digitization_worker
+from backend.web.request_logging import log_http_request
+from backend.web.schema_migrations import ensure_runtime_schema
 from config import settings
 from database import db
-
-from bot.handlers import start, webapp, tasks as bot_tasks, ai_chat, quests
-
-from api.routers.attachments import router as attachments_v1_router
-from api.routers.auth import router as auth_v1_router
-from api.routers.platform import router as platform_v1_router
-from api.routers.tutor import router as tutor_v1_router
-from api.routers.interactive import router as interactive_v1_router
-from api.routers.digitization import router as digitization_router
-from services.digitization.digitization_queue import start_digitization_worker, stop_digitization_worker
-
 from logger_config import logger
 
 BASE_DIR = Path(__file__).resolve().parent
+FRONTEND_DIR = BASE_DIR / "frontend"
+
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(_: FastAPI):
     await db.connect()
+    await ensure_runtime_schema(db.pool)
     await start_digitization_worker()
-    logger.info(" 🗄  Пул базы данных PostgreSQL успешно инициализирован.")
-    yield
-    await stop_digitization_worker()
-    await db.disconnect()
-    logger.info(" 🗄  Пул базы данных закрыт.")
+    logger.info("application_started")
+    try:
+        yield
+    finally:
+        await stop_digitization_worker()
+        await db.disconnect()
+        logger.info("application_stopped")
 
-app = FastAPI(
-    title="Umnix API Platform",
-    version="1.0.0",
-    lifespan=lifespan
-)
 
+app = FastAPI(title="Umnix API Platform", version="2.0.0", lifespan=lifespan)
+app.middleware("http")(log_http_request)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[],
@@ -51,140 +56,111 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Монтируем статику (если в папке templates или static лежат стили/скрипты/картинки)
-# Это предотвратит 404 ошибки при загрузке картинок и CSS-файлов
-static_dir = BASE_DIR / "static"
-if static_dir.exists():
-    app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
+app.mount("/static", StaticFiles(directory=str(FRONTEND_DIR / "static")), name="static")
+app.mount(
+    "/digitization-books",
+    StaticFiles(directory=str(FRONTEND_DIR / "digitization_books")),
+    name="digitization-books",
+)
 
-app.include_router(auth_v1_router)
-app.include_router(platform_v1_router)
-app.include_router(tutor_v1_router)
-app.include_router(interactive_v1_router)
-app.include_router(attachments_v1_router)
-app.include_router(digitization_router)
+for api_router in (
+    auth_router,
+    student_router,
+    teacher_router,
+    admin_router,
+    chat_router,
+    attachment_router,
+    book_router,
+    interactive_router,
+    digitization_router,
+):
+    app.include_router(api_router)
 
-bot = Bot(token=settings.bot_token.get_secret_value())
-dp = Dispatcher()
+templates = Jinja2Templates(directory=str(FRONTEND_DIR / "templates"))
 
-dp.include_router(bot_tasks.router)
-dp.include_router(start.router)
-dp.include_router(webapp.router)
-dp.include_router(quests.router)
-dp.include_router(ai_chat.router)
 
-templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
+def render_page(request: Request, template_name: str, **context):
+    return templates.TemplateResponse(request, template_name, context)
 
-# ================= РОУТЫ ДЛЯ СТРАНИЦ И ИНТЕРФЕЙСОВ (HTML) =================
 
+@app.get("/", response_class=HTMLResponse)
 @app.get("/auth", response_class=HTMLResponse)
-async def serve_auth_page(request: Request):
-    return templates.TemplateResponse(request, "auth.html")
+@app.get("/auth.html", response_class=HTMLResponse)
+@app.get("/parent/auth", response_class=HTMLResponse)
+@app.get("/parent/auth.html", response_class=HTMLResponse)
+async def auth_page(request: Request):
+    return render_page(request, "auth.html")
 
-@app.get("/admin", response_class=HTMLResponse)
-async def serve_admin_page(request: Request):
-    return templates.TemplateResponse(request, "admin.html")
 
 @app.get("/student", response_class=HTMLResponse)
-async def serve_student_page(request: Request):
-    return templates.TemplateResponse(request, "student.html")
+@app.get("/student.html", response_class=HTMLResponse)
+async def student_page(request: Request):
+    return render_page(request, "student.html")
+
 
 @app.get("/parent", response_class=HTMLResponse)
 @app.get("/parent/dashboard", response_class=HTMLResponse)
-async def parent_dashboard(request: Request):
-    return templates.TemplateResponse(request, "parent.html")
+@app.get("/parent/create-test", response_class=HTMLResponse)
+@app.get("/parent.html", response_class=HTMLResponse)
+async def parent_page(request: Request):
+    return render_page(request, "parent.html")
+
+
+@app.get("/admin", response_class=HTMLResponse)
+@app.get("/admin.html", response_class=HTMLResponse)
+async def admin_page(request: Request):
+    return render_page(request, "admin.html")
 
 
 @app.get("/files", response_class=HTMLResponse)
-async def serve_files_page(request: Request):
-    return templates.TemplateResponse(request, "files.html")
-
-@app.get("/parent/auth", response_class=HTMLResponse)
-async def parent_auth_page(request: Request):
-    return templates.TemplateResponse(request, "auth.html")
+@app.get("/files.html", response_class=HTMLResponse)
+async def files_page(request: Request):
+    return render_page(request, "files.html")
 
 
 @app.get("/interactive/{app_id}", response_class=HTMLResponse)
-async def serve_interactive_page(request: Request, app_id: str):
-    return templates.TemplateResponse(request, "interactive.html", {"app_id": app_id})
-
-@app.get("/", response_class=HTMLResponse)
-async def serve_home_page(request: Request):
-    return templates.TemplateResponse(request, "auth.html")
-
-# Дополнительный роут-предохранитель: если клиент обратится по старому пути с .html
-@app.get("/auth.html", response_class=HTMLResponse)
-async def serve_auth_legacy(request: Request):
-    return templates.TemplateResponse(request, "auth.html")
-
-@app.get("/parent/auth.html", response_class=HTMLResponse)
-async def serve_parent_auth_legacy(request: Request):
-    return templates.TemplateResponse(request, "auth.html")
-
-@app.get("/student.html", response_class=HTMLResponse)
-async def serve_student_legacy(request: Request):
-    return templates.TemplateResponse(request, "student.html")
-
-@app.get("/parent.html", response_class=HTMLResponse)
-async def serve_parent_legacy(request: Request):
-    return templates.TemplateResponse(request, "parent.html")
-
-@app.get("/admin.html", response_class=HTMLResponse)
-async def serve_admin_legacy(request: Request):
-    return templates.TemplateResponse(request, "admin.html")
-
-
-@app.get("/files.html", response_class=HTMLResponse)
-async def serve_files_legacy(request: Request):
-    return templates.TemplateResponse(request, "files.html")
+async def interactive_page(request: Request, app_id: str):
+    return render_page(request, "interactive.html", app_id=app_id)
 
 
 def build_api_server() -> uvicorn.Server:
-    # Публичный доступ обычно предоставляет reverse proxy; приложение слушает localhost.
-    config = uvicorn.Config(
+    server_config = uvicorn.Config(
         app=app,
-        host="127.0.0.1",
-        port=8000,
+        host=settings.host,
+        port=settings.port,
         log_config=None,
-        loop="asyncio"
+        loop="asyncio",
     )
-    return uvicorn.Server(config)
+    return uvicorn.Server(server_config)
 
 
-async def run_api(server: uvicorn.Server):
+async def run_api(server: uvicorn.Server) -> None:
     await server.serve()
 
-async def main():
+
+async def main() -> None:
     api_server = build_api_server()
     api_task = asyncio.create_task(run_api(api_server))
-    logger.info(" 🚀  Веб-сервер FastAPI успешно запущен на http://localhost:8000")
-
     try:
-        logger.info(" 🤖  Бот Umnix успешно запущен и слушает серверы Telegram (Polling)...")
         await bot.delete_webhook(drop_pending_updates=True)
         await dp.start_polling(bot)
-    except Exception as e:
-        logger.critical(f" 💥  Критическая ошибка в работе ядра: {e}")
     finally:
-        logger.info(" 🛑  Остановка сервисов бота...")
         await bot.session.close()
         api_server.should_exit = True
         try:
             await asyncio.wait_for(api_task, timeout=15)
         except asyncio.TimeoutError:
-            logger.warning("API не завершился за 15 секунд; отменяем оставшуюся задачу")
             api_task.cancel()
             try:
                 await api_task
             except asyncio.CancelledError:
                 pass
-        logger.info(" 👋  Все системы Umnix успешно остановлены.")
+
 
 if __name__ == "__main__":
     if sys.platform == "win32":
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-    
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
-        logger.info("Программа завершена пользователем.")
+        logger.info("application_stopped_by_user")
