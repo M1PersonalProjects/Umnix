@@ -6,6 +6,7 @@ from typing import Any, List, Optional, Sequence
 from pydantic import BaseModel, Field
 
 from backend.web.ai import parse_chat_completion
+from backend.web.prompts import AI_TUTOR_SYSTEM_PROMPT
 
 
 class GeneratedTaskItem(BaseModel):
@@ -113,7 +114,6 @@ def task_set_payload(generated: GeneratedTaskSet) -> dict[str, Any]:
 async def generate_exact_task_set(
     client,
     *,
-    system_prompt: str,
     user_content: Any,
     requested_count: int,
     model: Optional[str] = None,
@@ -123,9 +123,7 @@ async def generate_exact_task_set(
     requested_count = max(1, min(int(requested_count or 1), 100))
     count_instruction = (
         f"\n\nREQUESTED_COUNT: {requested_count}\n"
-        f"Return exactly {requested_count} distinct task item(s) in the `items` field. "
-        "Do not reduce the count because the primary textbook contains few examples. "
-        "Supplement from the supplied ranked sources and general knowledge when necessary."
+        f"Return exactly {requested_count} distinct item(s) in the `items` field."
     )
 
     async def request(content: Any, *, repair: bool = False) -> Optional[GeneratedTaskSet]:
@@ -148,7 +146,7 @@ async def generate_exact_task_set(
             model=model,
             temperature=temperature if not repair else min(temperature, 0.2),
             messages=[
-                {"role": "system", "content": system_prompt},
+                {"role": "system", "content": AI_TUTOR_SYSTEM_PROMPT},
                 {"role": "user", "content": final_content},
             ],
             response_format=GeneratedTaskSet,

@@ -474,45 +474,6 @@ def parse_quest_request(
 
 
 
-QUEST_CHOICE_RULES = r"""
-UMNIX QUEST-TEST RULES
-The output is a Telegram multiple-choice learning quest, not a free-text worksheet.
-
-QUESTION FORMAT
-- Every generated item MUST contain between 2 and 6 learner-visible `options`.
-- Every item MUST contain `correct_option_numbers` with 1-based option numbers.
-- Use exactly one correct option when the task naturally has one answer.
-- Use two or more correct options when classification, selection of properties, matching facts, causes/effects or
-  another learning goal benefits from multiple selection.
-- In a quest of 6 or more questions, include BOTH single-choice and multiple-choice items unless the source material
-  makes multiple selection objectively impossible. Do not make every item the same format.
-- For a simple recognition question use 2-3 options; for an ordinary question use 3-4; for a difficult or multi-step
-  question use 4-6. Across a quest of 4+ questions, vary the option count instead of using the same number on every
-  card.
-- Distractors must be plausible and topic-specific. Never use filler such as "другой вариант", "не знаю", or
-  repeated wording unless it is genuinely part of the learning objective.
-- `answer` is a private teacher/system explanation of why the selected option(s) are correct. It is not shown before
-  checking.
-- `short_answer` may contain a compact factual answer, but `correct_option_numbers` is the source of truth for
-  Telegram checking.
-
-PEDAGOGY
-- Build an interesting progression from easier orientation to application and challenge questions.
-- Vary cognitive operations: recognition, comparison, ordering, calculation, interpretation, cause/effect, source
-  analysis, diagram/file understanding, code reasoning, vocabulary/grammar, etc. Choose formats appropriate to the
-  subject.
-- Use the selected textbook/page and attachments as primary material. Use the digitized Umnix knowledge base as
-  supplement and web educational context only when supplied by the caller and still needed.
-- Keep wording age-appropriate for the inferred grade. Do not demand that the learner supplied grade/subject/topic
-  in a rigid form if context already makes them clear.
-"""
-
-
-def quest_choice_rules() -> str:
-    """Return the shared private prompt contract for Telegram quest choices."""
-    return QUEST_CHOICE_RULES.strip()
-
-
 def quest_choice_issues(payload: dict[str, Any]) -> list[str]:
     """Validate the closed-answer contract before a quest is saved or shown."""
     issues: list[str] = []
@@ -625,15 +586,12 @@ def check_quest_choice_answer(item: dict[str, Any], text: str) -> tuple[Optional
 async def generate_quest_task_set(
     client,
     *,
-    system_prompt: str,
     user_content: str,
     requested_count: int,
 ) -> tuple[GeneratedTaskSet, dict[str, Any]]:
-    """Generate an exact-size quest and repair malformed answer-choice banks once."""
-    prompt = "\n\n".join([str(system_prompt or "").strip(), quest_choice_rules()])
+    """Генерирует квест и один раз исправляет некорректный набор вариантов."""
     generated = await generate_exact_task_set(
         client,
-        system_prompt=prompt,
         user_content=user_content,
         requested_count=requested_count,
     )
@@ -650,7 +608,6 @@ async def generate_quest_task_set(
     )
     repaired = await generate_exact_task_set(
         client,
-        system_prompt=prompt,
         user_content=str(user_content or "") + repair_note,
         requested_count=requested_count,
         temperature=0.2,

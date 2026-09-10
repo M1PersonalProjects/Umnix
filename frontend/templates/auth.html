@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f6f8fc">
-<title>Вход — Umnix</title>
+<title>Вход — UmnixAI</title>
 <script src="https://cdn.tailwindcss.com">
 </script>
 <script src="https://telegram.org/js/telegram-web-app.js">
@@ -12,16 +12,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;550;650;750;850&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/css/app.css?v=20260825-umnix-2">
+<link rel="stylesheet" href="/static/css/app.css?v=20260910-mobile-header-1">
 </head>
-<body>
-<main class="min-h-screen grid lg:grid-cols-[1.1fr_.9fr]">
-<section class="hidden lg:flex relative overflow-hidden p-12 flex-col justify-between border-r border-white/10">
-<a class="umnix-brand" href="/auth.html" aria-label="Umnix">
+<body class="auth-page">
+<main class="auth-layout min-h-screen grid lg:grid-cols-[1.1fr_.9fr]">
+<section
+  class="auth-hero hidden lg:flex relative overflow-hidden p-12 flex-col justify-between border-r border-white/10"
+>
+<a class="umnix-brand" href="/auth.html" aria-label="UmnixAI">
 <span class="umnix-logo" aria-hidden="true">
 <span>u</span>
 </span>
-<span class="umnix-wordmark">Umnix</span>
+<span class="umnix-wordmark">UmnixAI</span>
 </a>
 <div class="relative z-10 max-w-xl">
 <span class="badge mb-6">
@@ -47,17 +49,17 @@
 </div>
 </div>
 </section>
-<section class="flex items-center justify-center px-4 py-10 sm:px-8">
+<section class="auth-panel-section flex items-center justify-center px-4 py-10 sm:px-8">
 <div class="w-full max-w-md">
-<div class="lg:hidden flex items-center justify-center mb-8">
-<a class="umnix-brand" href="/auth.html" aria-label="Umnix">
+<div class="auth-mobile-brand lg:hidden flex items-center justify-center mb-8">
+<a class="umnix-brand" href="/auth.html" aria-label="UmnixAI">
 <span class="umnix-logo" aria-hidden="true">
 <span>u</span>
 </span>
-<span class="umnix-wordmark">Umnix</span>
+<span class="umnix-wordmark">UmnixAI</span>
 </a>
 </div>
-<div class="glass rounded-[1.6rem] p-5 sm:p-8">
+<div class="auth-card glass rounded-[1.6rem] p-5 sm:p-8">
 <div class="mb-7">
 <p class="text-sm font-bold text-emerald-200">Добро пожаловать</p>
 <h1 class="mt-2 text-3xl font-[850] tracking-tight">Войдите в пространство</h1>
@@ -76,7 +78,7 @@
 <p id="telegram-status" class="mt-2 text-sm muted">Ожидаем подтверждение…</p>
 </div>
 <div id="standard-auth">
-<div class="rounded-2xl border border-white/10 bg-white/[.035] p-4 mb-5 flex gap-3">
+<div class="auth-bot-summary rounded-2xl border border-white/10 bg-white/[.035] p-4 mb-5 flex gap-3">
 <div class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-sky-400/10 text-sky-200">↗</div>
 <div>
 <p class="font-bold">Telegram Bot</p>
@@ -110,7 +112,7 @@
 </div>
 </div>
 </div>
-<p class="mt-5 text-center text-xs muted">Продолжая, вы подтверждаете вход в свой аккаунт Umnix.</p>
+<p class="auth-footer mt-5 text-center text-xs muted">Продолжая, вы подтверждаете вход в свой аккаунт UmnixAI.</p>
 </div>
 </section>
 </main>
@@ -118,7 +120,7 @@
 </div>
 <script src="/static/js/client_logger.js?v=20260909-1">
 </script>
-<script src="/static/js/app.js?v=20260909-auth-2">
+<script src="/static/js/app.js?v=20260910-mobile-header-1">
 </script>
 <script src="/static/js/auth.js?v=20260909-4">
 </script>

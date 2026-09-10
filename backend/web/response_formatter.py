@@ -13,23 +13,6 @@ import re
 from dataclasses import dataclass
 from typing import List, Literal, Optional
 
-MATH_FORMATTING_RULES = r"""
-MATHEMATICAL OUTPUT RULES
-- Keep educational responses in Markdown with valid canonical LaTeX for mathematical notation.
-- Use exactly one LaTeX backslash for commands and delimiters. Never double-escape LaTeX for display.
-- Use \( ... \) for inline mathematics and \[ ... \] for display mathematics.
-- Write fractions as \frac{numerator}{denominator}.
-- Use \sqrt{x} for roots, ^ for powers, and _ for subscripts inside math delimiters.
-- Keep normal explanatory prose outside mathematical delimiters.
-- Never output malformed or partially escaped LaTeX.
-- In Russian-language school arithmetic, write division as ':' in human-readable text, for example 12 : 4 = 3.
-- Never replace or reinterpret slashes inside URLs, file paths, dates, identifiers, API routes, inline code, or
-  fenced code blocks.
-- Preserve programming code exactly as code. A slash used as a programming operator must remain '/'.
-- The client is responsible for rendering canonical LaTeX; do not expose explanations of LaTeX syntax unless
-  the user explicitly asks for LaTeX source code.
-""".strip()
-
 
 def canonicalize_message(value: object) -> str:
     """Нормализовать пробелы в переносах, не нарушая Markdown или LaTeX."""

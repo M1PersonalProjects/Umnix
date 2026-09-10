@@ -343,6 +343,9 @@
         : !this.layout.classList.contains('threads-collapsed');
       this.layout.querySelectorAll('[data-chat-sidebar-toggle]').forEach(button => {
         button.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (button.classList.contains('chat-sidebar-collapse')) button.textContent = '<';
+        if (button.classList.contains('chat-sidebar-rail-button')) button.textContent = '>';
+        if (button.classList.contains('chat-sidebar-main-toggle')) button.textContent = open ? '<' : '>';
       });
     }
 

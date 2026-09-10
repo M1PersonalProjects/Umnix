@@ -19,7 +19,7 @@ def test_attachment_memory_is_scoped_to_session() -> None:
 
 
 def test_tutor_does_not_use_cross_chat_summary_memory() -> None:
-    assert 'session_memory = ""' in TUTOR_SOURCE
+    assert "session_memory" not in TUTOR_SOURCE
     assert "memory_summary" not in MEMORY_SOURCE
 
 

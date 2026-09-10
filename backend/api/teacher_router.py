@@ -12,11 +12,7 @@ from backend.web.response_formatter import canonicalize_message
 from backend.web.context_resolver import resolve_book_context
 from backend.web.educational_context import build_context_from_metadata, build_educational_context
 from backend.web.task_generation import extract_requested_task_count, generate_exact_task_set, task_set_payload
-from backend.web.tutor_policy import (
-    teacher_task_prompt,
-    private_answer_key_prompt,
-    task_grading_prompt,
-)
+from backend.web.prompts import AI_TUTOR_SYSTEM_PROMPT
 from backend.web.ai_tutor import clean_ai_text, search_web_for_education
 from backend.web.assignment_source import TEACHER, infer_difficulty, normalize_assignment_source
 from backend.web.attachment_storage import (
@@ -411,7 +407,7 @@ async def _generate_manual_answer_key(
             messages=[
                 {
                     "role": "system",
-                    "content": private_answer_key_prompt(),
+                    "content": AI_TUTOR_SYSTEM_PROMPT,
                 },
                 {"role": "user", "content": user_content},
             ],
@@ -935,7 +931,6 @@ async def generate_parent_task(
     try:
         generated = await generate_exact_task_set(
             openai_client,
-            system_prompt=teacher_task_prompt(),
             user_content=user_content,
             requested_count=requested_count,
             temperature=0.3,
@@ -1289,7 +1284,7 @@ async def suggest_parent_task_review(
         response = await parse_chat_completion(
             openai_client,
             messages=[
-                {"role": "system", "content": task_grading_prompt()},
+                {"role": "system", "content": AI_TUTOR_SYSTEM_PROMPT},
                 {"role": "user", "content": (
                     f"Assignment: {questions.get('question_text', '')}\n"
                     f"Private Teacher reference: {questions.get('reference_answer', '')}\n"

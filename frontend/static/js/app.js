@@ -627,7 +627,7 @@
 
 /* === EDUAI IOS-INSPIRED ADAPTIVE UI START === */
 (function () {
-  const THEME_KEY = 'eduai.ui.theme';
+  const THEME_KEY = 'umnix.ui.theme';
   const LAYOUT_PREFIX = 'eduai.ui.layout:';
   const currentPath = location.pathname || '/';
   const mediaDark = window.matchMedia?.('(prefers-color-scheme: dark)');
@@ -721,6 +721,7 @@
   }
 
   function createSettingsPanel() {
+    if (document.body.classList.contains('auth-page')) return;
     if (document.querySelector('[data-ui-settings]')) return;
     const host = document.querySelector('.topbar > :last-child') || document
       .querySelector('.interactive-toolbar') || document.body;
@@ -976,7 +977,7 @@
       button.type = 'button';
       button.className = 'btn-secondary book-panel-toggle';
       button.setAttribute('aria-expanded', 'false');
-      button.innerHTML = '<span aria-hidden="true">📚</span><span>Учебник</span>';
+      button.innerHTML = '<span aria-hidden="true">📚</span><span>Book Mode</span>';
       const headerRow = center.querySelector(':scope > div:first-child .flex') || center.firstElementChild;
       headerRow?.append(button);
       const backdrop = document.createElement('button');
@@ -1084,84 +1085,37 @@
   function setupTutorMobileNavigation() {
     document.querySelectorAll('[data-chat-layout]').forEach(layout => {
       if (layout.dataset.mobileNavReady === '1') return;
-      const section = layout.closest('.page-section');
       const center = layout.querySelector('.chat-center-card');
       const headerRow = center?.querySelector('.chat-screen-header-row') || center
         ?.querySelector(':scope > div:first-child .flex');
       const bookButton = headerRow?.querySelector('.book-panel-toggle');
-      const primaryNav = document.querySelector('.teacher-primary-nav, .student-primary-nav');
-      if (!section || !headerRow || !primaryNav) return;
+      const topbar = document.querySelector('.topbar');
+      const actions = topbar?.querySelector('.student-topbar-actions, .teacher-topbar-actions');
+      if (!headerRow || !bookButton || !actions) return;
       layout.dataset.mobileNavReady = '1';
 
-      const toggle = document.createElement('button');
-      toggle.type = 'button';
-      toggle.className = 'icon-btn tutor-mobile-nav-toggle';
-      toggle.setAttribute('aria-label', 'Открыть разделы');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.innerHTML = '<span aria-hidden="true" class="tutor-mobile-nav-arrow">↗</span>';
+      const marker = document.createComment('book-mode-home');
+      bookButton.before(marker);
+      const label = bookButton.querySelector('span:last-child');
+      const mobileQuery = window.matchMedia('(max-width: 1023px)');
 
-      const sheet = document.createElement('div');
-      sheet.className = 'tutor-mobile-nav-sheet glass-strong';
-      sheet.setAttribute('role', 'dialog');
-      sheet.setAttribute('aria-label', 'Разделы кабинета');
-      sheet.setAttribute('aria-hidden', 'true');
-
-      const addSection = source => {
-        const target = source.dataset.section;
-        if (!target || target === section.id) return;
-        const item = document.createElement('button');
-        item.type = 'button';
-        item.className = 'tutor-mobile-nav-item';
-        item.dataset.mobileNavTarget = target;
-        item.innerHTML = `<span aria-hidden="true">${navIcon(source)}</span><span>${navLabel(source)}</span>`;
-        item.addEventListener('click', () => {
-          source.click();
-          close();
-        });
-        sheet.append(item);
+      const placeBookMode = () => {
+        if (mobileQuery.matches) {
+          actions.prepend(bookButton);
+          bookButton.classList.add('book-panel-toggle-topbar');
+          if (label) label.textContent = 'Book';
+          return;
+        }
+        marker.after(bookButton);
+        bookButton.classList.remove('book-panel-toggle-topbar');
+        if (label) label.textContent = 'Book Mode';
       };
-      primaryNav.querySelectorAll('[data-section]').forEach(addSection);
 
-      const roleSource = primaryNav.querySelector('.quick-role-switch');
-      let roleClone = null;
-      if (roleSource) {
-        roleClone = document.createElement('a');
-        roleClone.className = 'tutor-mobile-nav-item tutor-mobile-role-switch';
-        roleClone.href = roleSource.href;
-        roleClone.innerHTML = '<span aria-hidden="true">⇄</span><span>Сменить роль</span>';
-        if (roleSource.hasAttribute('data-admin-only')) roleClone.setAttribute('data-admin-only', '');
-        roleClone.hidden = roleSource.hidden;
-        sheet.append(roleClone);
-        new MutationObserver(() => { roleClone.hidden = roleSource.hidden; }).observe(roleSource, {
-           attributes: true, attributeFilter: ['hidden'] });
-      }
-
-      const close = () => {
-        layout.classList.remove('mobile-nav-open');
-        toggle.setAttribute('aria-expanded', 'false');
-        sheet.setAttribute('aria-hidden', 'true');
-      };
-      const open = () => {
-        layout.classList.add('mobile-nav-open');
-        toggle.setAttribute('aria-expanded', 'true');
-        sheet.setAttribute('aria-hidden', 'false');
-      };
-      toggle.addEventListener('click', event => {
-        event.stopPropagation();
-        if (layout.classList.contains('mobile-nav-open')) close(); else open();
-      });
-      sheet.addEventListener('click', event => event.stopPropagation());
-      document.addEventListener('click', event => {
-        if (layout.classList.contains('mobile-nav-open') && !sheet.contains(event.target) && event
-          .target !== toggle) close();
-      });
-      document.addEventListener('keydown', event => { if (event.key === 'Escape') close(); });
-
-      if (bookButton) headerRow.insertBefore(toggle, bookButton);
-      else headerRow.append(toggle);
-      layout.append(sheet);
+      placeBookMode();
+      mobileQuery.addEventListener?.('change', placeBookMode);
     });
   }
+
 
   function setupGlobalScrollControl() {
     if (document.querySelector('[data-global-scroll-control]')) return;

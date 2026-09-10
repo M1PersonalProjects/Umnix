@@ -45,4 +45,4 @@ def test_shared_frontend_bootstrap_does_not_contain_invalid_dynamic_regex() -> N
     app_js = (ROOT / "frontend/static/js/app.js").read_text(encoding="utf-8")
     assert r"new RegExp(`\\(?:" not in app_js
     assert r"new RegExp(`\\\\(?:" in app_js
-    assert "/static/js/app.js?v=20260909-auth-2" in AUTH_HTML
+    assert "/static/js/app.js?v=20260910-mobile-header-1" in AUTH_HTML

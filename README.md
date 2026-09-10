@@ -64,6 +64,25 @@ download an HTML version. Teachers/admins can assign an application to linked
 students. Student submissions are graded on the backend rather than exposing a
 private answer key in the learner document.
 
+Canvas generation is intentionally isolated from normal tutor knowledge lookup.
+The HTML generator receives only `INTERACTIVE_TASK_RULES`, the current user
+request, the file/photo attached to that Canvas request when present, and active
+BookMode data when BookMode is enabled. It does not receive supplemental database
+search results, web-search context, role prompts, or unrelated chat attachments.
+Editing additionally receives the selected previous HTML version.
+
+### AI prompt layer
+
+The prompt layer is intentionally small. `backend/web/prompts.py` contains only:
+
+- `AI_TUTOR_SYSTEM_PROMPT`
+- `INTERACTIVE_TASK_RULES`
+- `INTERACTIVE_ANSWER_KEY_RULES`
+
+Textbook digitization keeps its dedicated `DIGITIZATION_BOOKS_RULES` in
+`backend/digitization_books/prompts.py`. The previous `backend/web/prompts/` tree
+and the old `tutor_policy.py` / `scope_guard.py` rule layers are removed.
+
 ### Textbook digitization
 
 Admin digitization follows this flow:

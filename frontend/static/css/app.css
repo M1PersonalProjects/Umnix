@@ -3999,3 +3999,1132 @@ body.admin-page .page-section {
     max-width: none !important;
   }
 }
+/* === 2026-09-10 MOBILE AUTH + UNIFIED TOPBAR === */
+@media (max-width: 767px) {
+  /* The login screen is intentionally compact and has no theme controls. */
+  body.auth-page {
+    min-height: 100dvh;
+    overflow-y: auto;
+  }
+  body.auth-page .auth-layout {
+    min-height: 100dvh !important;
+  }
+  body.auth-page .auth-panel-section {
+    min-height: 100dvh;
+    align-items: flex-start !important;
+    padding: max(.7rem, env(safe-area-inset-top)) max(.7rem, env(safe-area-inset-right))
+      max(.7rem, env(safe-area-inset-bottom)) max(.7rem, env(safe-area-inset-left)) !important;
+  }
+  body.auth-page .auth-panel-section > div {
+    max-width: 28rem;
+  }
+  body.auth-page .auth-mobile-brand {
+    margin-bottom: .65rem !important;
+  }
+  body.auth-page .auth-mobile-brand .umnix-logo {
+    width: 38px;
+    height: 38px;
+  }
+  body.auth-page .auth-card {
+    padding: 1rem !important;
+    border-radius: 22px !important;
+  }
+  body.auth-page .auth-card > div:first-child {
+    margin-bottom: 1rem !important;
+  }
+  body.auth-page .auth-card > div:first-child h1 {
+    margin-top: .25rem !important;
+    font-size: 1.65rem !important;
+    line-height: 1.08 !important;
+  }
+  body.auth-page .auth-card > div:first-child p:last-child {
+    margin-top: .4rem !important;
+    font-size: .9rem;
+  }
+  body.auth-page #telegram-entry {
+    margin-bottom: .85rem !important;
+  }
+  body.auth-page #telegram-hint {
+    margin-top: .4rem !important;
+  }
+  body.auth-page .auth-bot-summary {
+    display: none !important;
+  }
+  body.auth-page #standard-auth > .flex.items-center {
+    margin-top: .8rem !important;
+    margin-bottom: .8rem !important;
+  }
+  body.auth-page #browser-login {
+    gap: .7rem !important;
+  }
+  body.auth-page .auth-footer {
+    margin-top: .65rem !important;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* One compact iOS-like topbar for authenticated mobile pages. */
+  body.student-page .topbar,
+  body.teacher-page .topbar,
+  body.admin-page .topbar,
+  body.files-page .topbar,
+  body.student-page[data-active-section="tutor"] .topbar,
+  body.teacher-page[data-active-section="assistant"] .topbar {
+    position: relative !important;
+    z-index: 160 !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    display: flex !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 58px !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: .45rem !important;
+    margin: 0 0 .65rem !important;
+    padding: .45rem .5rem !important;
+    border: 1px solid var(--reference-border) !important;
+    border-radius: 21px !important;
+    background: color-mix(in srgb, var(--reference-panel-strong) 82%, transparent) !important;
+    box-shadow: var(--ios-shadow-sm) !important;
+    backdrop-filter: blur(22px) !important;
+    -webkit-backdrop-filter: blur(22px) !important;
+  }
+  body.student-page .topbar > *,
+  body.teacher-page .topbar > *,
+  body.admin-page .topbar > *,
+  body.files-page .topbar > *,
+  body.student-page[data-active-section="tutor"] .topbar > *,
+  body.teacher-page[data-active-section="assistant"] .topbar > * {
+    display: flex !important;
+  }
+  body.student-page .topbar-identity,
+  body.teacher-page .topbar-identity,
+  body.admin-page .topbar-identity {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  body.student-page .topbar-page-copy,
+  body.teacher-page .topbar-page-copy,
+  body.admin-page .topbar-page-copy,
+  body.files-page .file-library-header > div:first-child > div:last-child {
+    display: none !important;
+  }
+  body.student-page .topbar .umnix-brand,
+  body.teacher-page .topbar .umnix-brand,
+  body.admin-page .topbar .umnix-brand,
+  body.files-page .topbar .umnix-brand {
+    display: inline-flex !important;
+    flex: 0 1 auto;
+  }
+  body.student-page .topbar .umnix-logo,
+  body.teacher-page .topbar .umnix-logo,
+  body.admin-page .topbar .umnix-logo,
+  body.files-page .topbar .umnix-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 13px;
+  }
+  body.student-page .topbar .umnix-wordmark,
+  body.teacher-page .topbar .umnix-wordmark,
+  body.admin-page .topbar .umnix-wordmark,
+  body.files-page .topbar .umnix-wordmark {
+    display: inline !important;
+    font-size: 1rem;
+  }
+  body.student-page .student-topbar-actions,
+  body.teacher-page .teacher-topbar-actions,
+  body.admin-page .admin-topbar-actions,
+  body.files-page .file-library-header > div:last-child {
+    display: flex !important;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: .35rem !important;
+  }
+  body.student-page .topbar .hide-mobile {
+    display: none !important;
+  }
+  body.student-page .topbar .mobile-section-menu,
+  body.teacher-page .topbar .mobile-section-menu,
+  body.admin-page .topbar .mobile-section-menu,
+  body.student-page[data-active-section="tutor"] .topbar .mobile-section-menu,
+  body.teacher-page[data-active-section="assistant"] .topbar .mobile-section-menu {
+    display: inline-flex !important;
+  }
+  body.student-page .topbar .icon-btn,
+  body.teacher-page .topbar .icon-btn,
+  body.admin-page .topbar .icon-btn,
+  body.files-page .topbar .icon-btn {
+    width: 40px !important;
+    min-width: 40px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    border-radius: 13px !important;
+  }
+
+  /* The tutor keeps the same topbar and reserves the remaining viewport for chat. */
+  body.student-page[data-active-section="tutor"] .main-area,
+  body.teacher-page[data-active-section="assistant"] .main-area {
+    height: min(100dvh, var(--eduai-viewport-height, 100dvh)) !important;
+    padding: max(.55rem, env(safe-area-inset-top)) max(.55rem, env(safe-area-inset-right))
+      max(.55rem, env(safe-area-inset-bottom)) max(.55rem, env(safe-area-inset-left)) !important;
+  }
+  body.student-page[data-active-section="tutor"] #tutor.page-section.active,
+  body.teacher-page[data-active-section="assistant"] #assistant.page-section.active {
+    height: calc(100% - 69px) !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+  }
+  body.student-page[data-active-section="tutor"] .tutor-chat-layout,
+  body.teacher-page[data-active-section="assistant"] .tutor-chat-layout {
+    min-height: 0 !important;
+    height: 100% !important;
+  }
+  body.student-page[data-active-section="tutor"] .chat-center-card,
+  body.teacher-page[data-active-section="assistant"] .chat-center-card {
+    border: 1px solid var(--reference-border) !important;
+    border-radius: 21px !important;
+    background: color-mix(in srgb, var(--reference-panel) 72%, transparent) !important;
+  }
+  body.student-page[data-active-section="tutor"] .chat-screen-brand,
+  body.teacher-page[data-active-section="assistant"] .chat-screen-brand {
+    display: none !important;
+  }
+  body.student-page[data-active-section="tutor"] .chat-screen-header,
+  body.teacher-page[data-active-section="assistant"] .chat-screen-header {
+    min-height: 52px !important;
+    padding: .4rem .45rem !important;
+  }
+  body.student-page[data-active-section="tutor"] .chat-screen-header-row,
+  body.teacher-page[data-active-section="assistant"] .chat-screen-header-row {
+    justify-content: space-between;
+    padding-right: 0 !important;
+  }
+  body.student-page[data-active-section="tutor"] .tutor-mobile-nav-toggle,
+  body.teacher-page[data-active-section="assistant"] .tutor-mobile-nav-toggle {
+    display: none !important;
+  }
+  body.student-page[data-active-section="tutor"] .chat-sidebar-main-toggle,
+  body.teacher-page[data-active-section="assistant"] .chat-sidebar-main-toggle,
+  body.student-page[data-active-section="tutor"] .chat-thread-sidebar-head .chat-sidebar-collapse,
+  body.teacher-page[data-active-section="assistant"] .chat-thread-sidebar-head .chat-sidebar-collapse {
+    display: inline-flex !important;
+    width: 40px !important;
+    min-width: 40px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px !important;
+    font-size: 1.3rem;
+    font-weight: 800;
+  }
+  body.student-page[data-active-section="tutor"] .chat-screen-header-row > .book-panel-toggle,
+  body.teacher-page[data-active-section="assistant"] .chat-screen-header-row > .book-panel-toggle {
+    display: inline-flex !important;
+    min-height: 40px !important;
+    margin-left: auto !important;
+    border-radius: 13px !important;
+    padding: .48rem .72rem !important;
+    white-space: nowrap;
+  }
+  body.student-page[data-active-section="tutor"] .book-panel-toggle span:last-child,
+  body.teacher-page[data-active-section="assistant"] .book-panel-toggle span:last-child {
+    display: inline !important;
+  }
+
+  /* File library and interactive pages use the same compact rounded header language. */
+  body.files-page .file-library-header > div:first-child {
+    min-width: 0;
+    gap: .35rem !important;
+  }
+  body.files-page #files-back {
+    order: 2;
+  }
+  .interactive-toolbar {
+    min-height: 58px;
+    padding: .45rem .5rem !important;
+    border-radius: 21px !important;
+  }
+  .interactive-toolbar-title > div:last-child {
+    display: none !important;
+  }
+  .interactive-toolbar .umnix-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 13px;
+  }
+}
+@media (max-width: 370px) {
+  body.student-page .topbar .umnix-wordmark,
+  body.teacher-page .topbar .umnix-wordmark,
+  body.admin-page .topbar .umnix-wordmark,
+  body.files-page .topbar .umnix-wordmark {
+    display: none !important;
+  }
+}
+/* === /2026-09-10 MOBILE AUTH + UNIFIED TOPBAR === */
+
+/* === 2026-09-10 MOBILE TUTOR FULLSCREEN GLASS LAYOUT === */
+@media (max-width: 767px) {
+  .topbar .book-panel-toggle-topbar {
+    display: none !important;
+  }
+
+  body.student-page[data-active-section="tutor"],
+  body.teacher-page[data-active-section="assistant"] {
+    width: 100%;
+    height: min(100dvh, var(--eduai-viewport-height, 100dvh));
+    min-height: 0;
+    overflow: hidden !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .main-area,
+  body.teacher-page[data-active-section="assistant"] .main-area {
+    position: relative;
+    width: 100% !important;
+    max-width: none !important;
+    height: min(100dvh, var(--eduai-viewport-height, 100dvh)) !important;
+    max-height: 100dvh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  body.student-page[data-active-section="tutor"] #tutor.page-section.active,
+  body.teacher-page[data-active-section="assistant"] #assistant.page-section.active,
+  body.student-page[data-active-section="tutor"] .tutor-chat-layout,
+  body.teacher-page[data-active-section="assistant"] .tutor-chat-layout,
+  body.student-page[data-active-section="tutor"] .chat-center-card,
+  body.teacher-page[data-active-section="assistant"] .chat-center-card {
+    width: 100% !important;
+    max-width: none !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] #tutor.page-section.active,
+  body.teacher-page[data-active-section="assistant"] #assistant.page-section.active {
+    position: absolute !important;
+    inset: 0 !important;
+    overflow: hidden !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .tutor-chat-layout,
+  body.teacher-page[data-active-section="assistant"] .tutor-chat-layout {
+    position: relative !important;
+    display: block !important;
+    overflow: hidden !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-center-card,
+  body.teacher-page[data-active-section="assistant"] .chat-center-card {
+    position: absolute !important;
+    inset: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar,
+  body.teacher-page[data-active-section="assistant"] .topbar {
+    position: fixed !important;
+    z-index: 190 !important;
+    top: max(.45rem, env(safe-area-inset-top)) !important;
+    right: max(.45rem, env(safe-area-inset-right)) !important;
+    left: max(.45rem, env(safe-area-inset-left)) !important;
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 54px !important;
+    margin: 0 !important;
+    padding: .38rem .42rem !important;
+    border: 1px solid color-mix(in srgb, var(--reference-border) 72%, transparent) !important;
+    border-radius: 22px !important;
+    background: color-mix(in srgb, var(--reference-panel-strong) 48%, transparent) !important;
+    box-shadow: 0 10px 34px rgba(0, 0, 0, .12) !important;
+    backdrop-filter: saturate(155%) blur(18px) !important;
+    -webkit-backdrop-filter: saturate(155%) blur(18px) !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar-identity,
+  body.teacher-page[data-active-section="assistant"] .topbar-identity {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    align-items: center !important;
+    gap: .35rem !important;
+    min-width: 0 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar-page-copy,
+  body.teacher-page[data-active-section="assistant"] .topbar-page-copy {
+    display: none !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar .umnix-brand,
+  body.teacher-page[data-active-section="assistant"] .topbar .umnix-brand {
+    display: inline-flex !important;
+    flex: 0 1 auto !important;
+    gap: .38rem !important;
+    min-width: 0 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar .umnix-logo,
+  body.teacher-page[data-active-section="assistant"] .topbar .umnix-logo {
+    width: 38px !important;
+    height: 38px !important;
+    flex: 0 0 38px !important;
+    border-radius: 13px !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar .umnix-wordmark,
+  body.teacher-page[data-active-section="assistant"] .topbar .umnix-wordmark {
+    display: inline !important;
+    max-width: 4.7rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: .94rem !important;
+    white-space: nowrap;
+  }
+
+  body.student-page[data-active-section="tutor"] .book-panel-toggle-topbar,
+  body.teacher-page[data-active-section="assistant"] .book-panel-toggle-topbar {
+    display: inline-flex !important;
+    width: auto !important;
+    min-width: 0 !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    gap: .25rem !important;
+    margin: 0 !important;
+    padding: .35rem .5rem !important;
+    border-radius: 12px !important;
+    font-size: .72rem !important;
+    font-weight: 800 !important;
+    white-space: nowrap !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .book-panel-toggle-topbar span:first-child,
+  body.teacher-page[data-active-section="assistant"] .book-panel-toggle-topbar span:first-child {
+    display: none !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .book-panel-toggle-topbar span:last-child,
+  body.teacher-page[data-active-section="assistant"] .book-panel-toggle-topbar span:last-child {
+    display: inline !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .student-topbar-actions,
+  body.teacher-page[data-active-section="assistant"] .teacher-topbar-actions {
+    display: flex !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    gap: .25rem !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar .mobile-section-menu,
+  body.teacher-page[data-active-section="assistant"] .topbar .mobile-section-menu {
+    display: inline-flex !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar .icon-btn,
+  body.teacher-page[data-active-section="assistant"] .topbar .icon-btn,
+  body.student-page[data-active-section="tutor"] .mobile-section-menu-toggle,
+  body.teacher-page[data-active-section="assistant"] .mobile-section-menu-toggle,
+  body.student-page[data-active-section="tutor"] .ui-settings-toggle,
+  body.teacher-page[data-active-section="assistant"] .ui-settings-toggle {
+    width: 38px !important;
+    min-width: 38px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    border-radius: 12px !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-screen-header,
+  body.teacher-page[data-active-section="assistant"] .chat-screen-header {
+    position: absolute !important;
+    z-index: 170 !important;
+    inset: 0 auto auto 0 !important;
+    width: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    pointer-events: none !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-screen-header-row,
+  body.teacher-page[data-active-section="assistant"] .chat-screen-header-row {
+    width: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-screen-brand,
+  body.teacher-page[data-active-section="assistant"] .chat-screen-brand,
+  body.student-page[data-active-section="tutor"] .chat-screen-title,
+  body.teacher-page[data-active-section="assistant"] .chat-screen-title,
+  body.student-page[data-active-section="tutor"] .tutor-mobile-nav-toggle,
+  body.teacher-page[data-active-section="assistant"] .tutor-mobile-nav-toggle {
+    display: none !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-sidebar-main-toggle,
+  body.teacher-page[data-active-section="assistant"] .chat-sidebar-main-toggle {
+    position: fixed !important;
+    z-index: 176 !important;
+    top: 50% !important;
+    left: 0 !important;
+    display: inline-flex !important;
+    width: 30px !important;
+    min-width: 30px !important;
+    height: 54px !important;
+    min-height: 54px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    border: 1px solid color-mix(in srgb, var(--reference-border) 78%, transparent) !important;
+    border-left: 0 !important;
+    border-radius: 0 15px 15px 0 !important;
+    color: var(--reference-text) !important;
+    background: color-mix(in srgb, var(--reference-panel-strong) 58%, transparent) !important;
+    box-shadow: 6px 8px 24px rgba(0, 0, 0, .1) !important;
+    font-size: 1.35rem !important;
+    font-weight: 850 !important;
+    line-height: 1 !important;
+    transform: translateY(-50%) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+    pointer-events: auto !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .threads-drawer-open .chat-sidebar-main-toggle,
+  body.teacher-page[data-active-section="assistant"] .threads-drawer-open .chat-sidebar-main-toggle {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-log-wrap,
+  body.teacher-page[data-active-section="assistant"] .chat-log-wrap {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-log,
+  body.teacher-page[data-active-section="assistant"] .chat-log {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: calc(4.9rem + env(safe-area-inset-top)) .72rem
+      calc(6.2rem + env(safe-area-inset-bottom)) !important;
+    overflow-y: auto !important;
+    scrollbar-gutter: auto !important;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body.student-page[data-active-section="tutor"] .message,
+  body.teacher-page[data-active-section="assistant"] .message {
+    margin: .62rem 0 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-composer-stack,
+  body.teacher-page[data-active-section="assistant"] .chat-composer-stack {
+    position: absolute !important;
+    z-index: 172 !important;
+    right: max(.55rem, env(safe-area-inset-right)) !important;
+    bottom: max(.5rem, env(safe-area-inset-bottom)) !important;
+    left: max(.55rem, env(safe-area-inset-left)) !important;
+    width: auto !important;
+    margin: 0 !important;
+    pointer-events: none;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-composer-stack > *,
+  body.teacher-page[data-active-section="assistant"] .chat-composer-stack > * {
+    pointer-events: auto;
+  }
+
+  body.student-page[data-active-section="tutor"] #chat-form,
+  body.teacher-page[data-active-section="assistant"] #parent-chat-form {
+    background: color-mix(in srgb, var(--reference-panel-strong) 58%, transparent) !important;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, .14) !important;
+    backdrop-filter: saturate(150%) blur(22px) !important;
+    -webkit-backdrop-filter: saturate(150%) blur(22px) !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-thread-sidebar,
+  body.teacher-page[data-active-section="assistant"] .chat-thread-sidebar {
+    position: fixed !important;
+    z-index: 185 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: min(84vw, 21rem) !important;
+    max-width: min(84vw, 21rem) !important;
+    height: min(100dvh, var(--eduai-viewport-height, 100dvh)) !important;
+    max-height: none !important;
+    padding: max(.8rem, env(safe-area-inset-top)) .8rem
+      max(.8rem, env(safe-area-inset-bottom)) !important;
+    border: 0 !important;
+    border-radius: 0 24px 24px 0 !important;
+    background: color-mix(in srgb, var(--reference-panel-strong) 90%, transparent) !important;
+    box-shadow: 14px 0 42px rgba(0, 0, 0, .18) !important;
+    transform: translate3d(calc(-100% - .8rem), 0, 0) !important;
+    backdrop-filter: saturate(150%) blur(26px) !important;
+    -webkit-backdrop-filter: saturate(150%) blur(26px) !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .threads-drawer-open .chat-thread-sidebar,
+  body.teacher-page[data-active-section="assistant"] .threads-drawer-open .chat-thread-sidebar {
+    transform: translate3d(0, 0, 0) !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-thread-sidebar-head .chat-sidebar-collapse,
+  body.teacher-page[data-active-section="assistant"] .chat-thread-sidebar-head .chat-sidebar-collapse {
+    display: inline-flex !important;
+    width: 42px !important;
+    min-width: 42px !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 13px !important;
+    font-size: 1.35rem !important;
+    font-weight: 850 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-thread-backdrop,
+  body.teacher-page[data-active-section="assistant"] .chat-thread-backdrop {
+    position: fixed !important;
+    z-index: 180 !important;
+    inset: 0 !important;
+    display: block !important;
+    visibility: hidden;
+    opacity: 0;
+    border: 0 !important;
+    background: rgba(0, 0, 0, .18) !important;
+    transition: opacity .2s ease, visibility .2s ease;
+    pointer-events: none;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+
+  body.student-page[data-active-section="tutor"] .threads-drawer-open .chat-thread-backdrop,
+  body.teacher-page[data-active-section="assistant"] .threads-drawer-open .chat-thread-backdrop {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-context-panel,
+  body.teacher-page[data-active-section="assistant"] .chat-context-panel {
+    z-index: 205 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .ui-context-backdrop,
+  body.teacher-page[data-active-section="assistant"] .ui-context-backdrop {
+    z-index: 200 !important;
+  }
+}
+
+@media (max-width: 360px) {
+  body.student-page[data-active-section="tutor"] .topbar .umnix-wordmark,
+  body.teacher-page[data-active-section="assistant"] .topbar .umnix-wordmark {
+    display: none !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .book-panel-toggle-topbar,
+  body.teacher-page[data-active-section="assistant"] .book-panel-toggle-topbar {
+    padding-inline: .42rem !important;
+    font-size: .68rem !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar .icon-btn,
+  body.teacher-page[data-active-section="assistant"] .topbar .icon-btn,
+  body.student-page[data-active-section="tutor"] .mobile-section-menu-toggle,
+  body.teacher-page[data-active-section="assistant"] .mobile-section-menu-toggle,
+  body.student-page[data-active-section="tutor"] .ui-settings-toggle,
+  body.teacher-page[data-active-section="assistant"] .ui-settings-toggle {
+    width: 36px !important;
+    min-width: 36px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+  }
+}
+/* === 2026-09-10 MOBILE TUTOR FULLSCREEN GLASS LAYOUT END === */
+
+/* === 2026-09-10 TUTOR MOBILE TOPBAR: EXACT FIVE CONTROLS === */
+@media (max-width: 767px) {
+  body.student-page[data-active-section="tutor"] .topbar,
+  body.teacher-page[data-active-section="assistant"] .topbar {
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar-identity,
+  body.teacher-page[data-active-section="assistant"] .topbar-identity {
+    display: none !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .student-topbar-actions,
+  body.teacher-page[data-active-section="assistant"] .teacher-topbar-actions {
+    width: 100% !important;
+    flex: 1 1 100% !important;
+    justify-content: space-between !important;
+    gap: .3rem !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .book-panel-toggle-topbar,
+  body.teacher-page[data-active-section="assistant"] .book-panel-toggle-topbar {
+    order: 1 !important;
+    min-width: 70px !important;
+    justify-content: center !important;
+    gap: .28rem !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .book-panel-toggle-topbar span:first-child,
+  body.teacher-page[data-active-section="assistant"] .book-panel-toggle-topbar span:first-child,
+  body.student-page[data-active-section="tutor"] .book-panel-toggle-topbar span:last-child,
+  body.teacher-page[data-active-section="assistant"] .book-panel-toggle-topbar span:last-child {
+    display: inline !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .mobile-section-menu,
+  body.teacher-page[data-active-section="assistant"] .mobile-section-menu {
+    order: 2 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] #refresh-dashboard,
+  body.teacher-page[data-active-section="assistant"] #refresh-parent {
+    order: 3 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] [data-logout],
+  body.teacher-page[data-active-section="assistant"] [data-logout] {
+    order: 4 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] [data-ui-settings],
+  body.teacher-page[data-active-section="assistant"] [data-ui-settings] {
+    order: 5 !important;
+  }
+}
+/* === /2026-09-10 TUTOR MOBILE TOPBAR: EXACT FIVE CONTROLS === */
+
+/* === 2026-09-10 TUTOR MOBILE/TABLET TOPBAR + 75% CHAT DRAWER FIX === */
+@media (max-width: 1023px) {
+  body.student-page[data-active-section="tutor"] .topbar,
+  body.teacher-page[data-active-section="assistant"] .topbar {
+    position: fixed !important;
+    z-index: 190 !important;
+    top: max(.45rem, env(safe-area-inset-top)) !important;
+    right: max(.45rem, env(safe-area-inset-right)) !important;
+    left: max(.45rem, env(safe-area-inset-left)) !important;
+    display: flex !important;
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 54px !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: .38rem .42rem !important;
+    border: 1px solid color-mix(in srgb, var(--reference-border) 72%, transparent) !important;
+    border-radius: 22px !important;
+    background: color-mix(in srgb, var(--reference-panel-strong) 48%, transparent) !important;
+    box-shadow: 0 10px 34px rgba(0, 0, 0, .12) !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+    backdrop-filter: saturate(155%) blur(18px) !important;
+    -webkit-backdrop-filter: saturate(155%) blur(18px) !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar-identity,
+  body.teacher-page[data-active-section="assistant"] .topbar-identity,
+  body.student-page[data-active-section="tutor"] .desktop-quick-nav,
+  body.teacher-page[data-active-section="assistant"] .desktop-quick-nav,
+  body.student-page[data-active-section="tutor"] .topbar-page-copy,
+  body.teacher-page[data-active-section="assistant"] .topbar-page-copy,
+  body.student-page[data-active-section="tutor"] .topbar .hide-mobile,
+  body.teacher-page[data-active-section="assistant"] .topbar .hide-mobile {
+    display: none !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .student-topbar-actions,
+  body.teacher-page[data-active-section="assistant"] .teacher-topbar-actions {
+    display: flex !important;
+    width: 100% !important;
+    flex: 1 1 100% !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: .3rem !important;
+    min-width: 0 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .book-panel-toggle-topbar,
+  body.teacher-page[data-active-section="assistant"] .book-panel-toggle-topbar {
+    order: 1 !important;
+    display: inline-flex !important;
+    min-width: 72px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: .28rem !important;
+    margin: 0 !important;
+    padding: .35rem .52rem !important;
+    border-radius: 13px !important;
+    font-size: .74rem !important;
+    font-weight: 800 !important;
+    white-space: nowrap !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .book-panel-toggle-topbar span:first-child,
+  body.teacher-page[data-active-section="assistant"] .book-panel-toggle-topbar span:first-child,
+  body.student-page[data-active-section="tutor"] .book-panel-toggle-topbar span:last-child,
+  body.teacher-page[data-active-section="assistant"] .book-panel-toggle-topbar span:last-child {
+    display: inline !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .mobile-section-menu,
+  body.teacher-page[data-active-section="assistant"] .mobile-section-menu {
+    order: 2 !important;
+    display: inline-flex !important;
+  }
+
+  body.student-page[data-active-section="tutor"] #refresh-dashboard,
+  body.teacher-page[data-active-section="assistant"] #refresh-parent {
+    order: 3 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] [data-logout],
+  body.teacher-page[data-active-section="assistant"] [data-logout] {
+    order: 4 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] [data-ui-settings],
+  body.teacher-page[data-active-section="assistant"] [data-ui-settings] {
+    order: 5 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar .icon-btn,
+  body.teacher-page[data-active-section="assistant"] .topbar .icon-btn,
+  body.student-page[data-active-section="tutor"] .mobile-section-menu-toggle,
+  body.teacher-page[data-active-section="assistant"] .mobile-section-menu-toggle,
+  body.student-page[data-active-section="tutor"] .ui-settings-toggle,
+  body.teacher-page[data-active-section="assistant"] .ui-settings-toggle {
+    width: 40px !important;
+    min-width: 40px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    border-radius: 13px !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .main-area,
+  body.teacher-page[data-active-section="assistant"] .main-area,
+  body.student-page[data-active-section="tutor"] #tutor.page-section.active,
+  body.teacher-page[data-active-section="assistant"] #assistant.page-section.active,
+  body.student-page[data-active-section="tutor"] .tutor-chat-layout,
+  body.teacher-page[data-active-section="assistant"] .tutor-chat-layout,
+  body.student-page[data-active-section="tutor"] .chat-center-card,
+  body.teacher-page[data-active-section="assistant"] .chat-center-card {
+    width: 100vw !important;
+    max-width: none !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-thread-sidebar,
+  body.teacher-page[data-active-section="assistant"] .chat-thread-sidebar {
+    position: fixed !important;
+    z-index: 185 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: auto !important;
+    width: 75vw !important;
+    min-width: 75vw !important;
+    max-width: 75vw !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    padding: max(.8rem, env(safe-area-inset-top)) .8rem
+      max(.8rem, env(safe-area-inset-bottom)) !important;
+    border: 0 !important;
+    border-radius: 0 24px 24px 0 !important;
+    overflow: hidden !important;
+    background: color-mix(in srgb, var(--reference-panel-strong) 92%, transparent) !important;
+    box-shadow: 14px 0 42px rgba(0, 0, 0, .18) !important;
+    transform: translate3d(-100%, 0, 0) !important;
+    backdrop-filter: saturate(150%) blur(26px) !important;
+    -webkit-backdrop-filter: saturate(150%) blur(26px) !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .threads-drawer-open .chat-thread-sidebar,
+  body.teacher-page[data-active-section="assistant"] .threads-drawer-open .chat-thread-sidebar {
+    transform: translate3d(0, 0, 0) !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-thread-sidebar-head,
+  body.teacher-page[data-active-section="assistant"] .chat-thread-sidebar-head {
+    display: flex !important;
+    align-items: center !important;
+    gap: .55rem !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-thread-sidebar-head .chat-sidebar-collapse,
+  body.teacher-page[data-active-section="assistant"] .chat-thread-sidebar-head .chat-sidebar-collapse {
+    display: inline-flex !important;
+    width: 42px !important;
+    min-width: 42px !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 42px !important;
+    border-radius: 13px !important;
+    font-size: 1.35rem !important;
+    font-weight: 850 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-sidebar-rail-button,
+  body.teacher-page[data-active-section="assistant"] .chat-sidebar-rail-button {
+    display: none !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-sidebar-main-toggle,
+  body.teacher-page[data-active-section="assistant"] .chat-sidebar-main-toggle {
+    position: fixed !important;
+    z-index: 176 !important;
+    top: 50% !important;
+    left: 0 !important;
+    display: inline-flex !important;
+    width: 31px !important;
+    min-width: 31px !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    border-left: 0 !important;
+    border-radius: 0 15px 15px 0 !important;
+    font-size: 1.35rem !important;
+    font-weight: 850 !important;
+    line-height: 1 !important;
+    transform: translateY(-50%) !important;
+    pointer-events: auto !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .threads-drawer-open .chat-sidebar-main-toggle,
+  body.teacher-page[data-active-section="assistant"] .threads-drawer-open .chat-sidebar-main-toggle {
+    display: none !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-thread-backdrop,
+  body.teacher-page[data-active-section="assistant"] .chat-thread-backdrop {
+    position: fixed !important;
+    z-index: 180 !important;
+    inset: 0 !important;
+    display: block !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    border: 0 !important;
+    background: rgba(0, 0, 0, .18) !important;
+    pointer-events: none !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .threads-drawer-open .chat-thread-backdrop,
+  body.teacher-page[data-active-section="assistant"] .threads-drawer-open .chat-thread-backdrop {
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+/* === /2026-09-10 TUTOR MOBILE/TABLET TOPBAR + 75% CHAT DRAWER FIX === */
+
+/* === 2026-09-10 TUTOR MOBILE TOPBAR ALIGNMENT + DRAWER LAYER FIX === */
+@media (max-width: 1023px) {
+  body.student-page[data-active-section="tutor"] .topbar,
+  body.teacher-page[data-active-section="assistant"] .topbar {
+    z-index: 190 !important;
+    justify-content: flex-start !important;
+    gap: .35rem !important;
+    padding: .32rem .4rem !important;
+    border-color: color-mix(in srgb, var(--reference-border) 52%, transparent) !important;
+    background: color-mix(in srgb, var(--reference-panel-strong) 30%, transparent) !important;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .08) !important;
+    backdrop-filter: saturate(140%) blur(14px) !important;
+    -webkit-backdrop-filter: saturate(140%) blur(14px) !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar-identity,
+  body.teacher-page[data-active-section="assistant"] .topbar-identity {
+    display: flex !important;
+    visibility: visible !important;
+    width: auto !important;
+    min-width: 0 !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    opacity: 1 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar .umnix-brand,
+  body.teacher-page[data-active-section="assistant"] .topbar .umnix-brand {
+    display: inline-flex !important;
+    min-width: 0 !important;
+    align-items: center !important;
+    gap: 0 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar .umnix-logo,
+  body.teacher-page[data-active-section="assistant"] .topbar .umnix-logo {
+    display: none !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar .umnix-wordmark,
+  body.teacher-page[data-active-section="assistant"] .topbar .umnix-wordmark {
+    display: inline !important;
+    max-width: none !important;
+    overflow: visible !important;
+    font-size: .92rem !important;
+    font-weight: 850 !important;
+    text-overflow: clip !important;
+    white-space: nowrap !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .student-topbar-actions,
+  body.teacher-page[data-active-section="assistant"] .teacher-topbar-actions {
+    display: flex !important;
+    width: auto !important;
+    min-width: 0 !important;
+    flex: 0 1 auto !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: .18rem !important;
+    margin-left: auto !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .book-panel-toggle-topbar,
+  body.teacher-page[data-active-section="assistant"] .book-panel-toggle-topbar {
+    order: 1 !important;
+    display: inline-flex !important;
+    min-width: 62px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    flex: 0 0 auto !important;
+    padding: .28rem .42rem !important;
+    border-radius: 12px !important;
+    font-size: .7rem !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .mobile-section-menu,
+  body.teacher-page[data-active-section="assistant"] .mobile-section-menu {
+    order: 2 !important;
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+  }
+
+  body.student-page[data-active-section="tutor"] #refresh-dashboard,
+  body.teacher-page[data-active-section="assistant"] #refresh-parent {
+    order: 3 !important;
+    display: inline-flex !important;
+    flex: 0 0 36px !important;
+  }
+
+  body.student-page[data-active-section="tutor"] [data-logout],
+  body.teacher-page[data-active-section="assistant"] [data-logout] {
+    order: 4 !important;
+    display: inline-flex !important;
+    flex: 0 0 36px !important;
+  }
+
+  body.student-page[data-active-section="tutor"] [data-ui-settings],
+  body.teacher-page[data-active-section="assistant"] [data-ui-settings] {
+    order: 5 !important;
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar .icon-btn,
+  body.teacher-page[data-active-section="assistant"] .topbar .icon-btn,
+  body.student-page[data-active-section="tutor"] .mobile-section-menu-toggle,
+  body.teacher-page[data-active-section="assistant"] .mobile-section-menu-toggle,
+  body.student-page[data-active-section="tutor"] .ui-settings-toggle,
+  body.teacher-page[data-active-section="assistant"] .ui-settings-toggle {
+    width: 36px !important;
+    min-width: 36px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    flex: 0 0 36px !important;
+    border-radius: 12px !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-thread-backdrop,
+  body.teacher-page[data-active-section="assistant"] .chat-thread-backdrop {
+    z-index: 250 !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-thread-sidebar,
+  body.teacher-page[data-active-section="assistant"] .chat-thread-sidebar {
+    z-index: 260 !important;
+    width: 75vw !important;
+    min-width: 75vw !important;
+    max-width: 75vw !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .chat-thread-sidebar-head,
+  body.teacher-page[data-active-section="assistant"] .chat-thread-sidebar-head {
+    position: sticky !important;
+    z-index: 2 !important;
+    top: 0 !important;
+  }
+}
+
+@media (max-width: 359px) {
+  body.student-page[data-active-section="tutor"] .topbar,
+  body.teacher-page[data-active-section="assistant"] .topbar {
+    gap: .22rem !important;
+    padding-inline: .3rem !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .topbar .umnix-wordmark,
+  body.teacher-page[data-active-section="assistant"] .topbar .umnix-wordmark {
+    font-size: .82rem !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .student-topbar-actions,
+  body.teacher-page[data-active-section="assistant"] .teacher-topbar-actions {
+    gap: .1rem !important;
+  }
+
+  body.student-page[data-active-section="tutor"] .book-panel-toggle-topbar,
+  body.teacher-page[data-active-section="assistant"] .book-panel-toggle-topbar {
+    min-width: 56px !important;
+    padding-inline: .32rem !important;
+    font-size: .66rem !important;
+  }
+}
+/* === /2026-09-10 TUTOR MOBILE TOPBAR ALIGNMENT + DRAWER LAYER FIX === */
+
+/* === 2026-09-10 CHAT DRAWER ABOVE TUTOR TOPBAR === */
+@media (max-width: 1023px) {
+  body.student-page[data-active-section="tutor"] #tutor.page-section.active:has(.threads-drawer-open),
+  body.teacher-page[data-active-section="assistant"] #assistant.page-section.active:has(.threads-drawer-open) {
+    z-index: 240 !important;
+  }
+}
+/* === /2026-09-10 CHAT DRAWER ABOVE TUTOR TOPBAR === */

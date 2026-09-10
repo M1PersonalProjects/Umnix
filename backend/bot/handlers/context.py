@@ -13,7 +13,6 @@ from backend.web.thinking import TelegramThinkingIndicator
 from backend.web.ai_tutor import exit_book_mode, ensure_telegram_session, search_web_for_education
 from backend.web.ai_tutor import generate_response
 from backend.web.educational_context import build_educational_context
-from backend.web.tutor_policy import student_task_prompt
 from backend.web.quest_generation import (
     canonicalize_subject,
     check_quest_choice_answer,

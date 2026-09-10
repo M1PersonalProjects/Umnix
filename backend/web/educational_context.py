@@ -37,7 +37,7 @@ class EducationalSource:
 
 @dataclass
 class EducationalContextBundle:
-    """One ranked context object shared by tutor, tasks, grading and interactive apps."""
+    """Контекст БД для тьютора, обычных заданий и квестов."""
 
     primary: Optional[ResolvedContext] = None
     attachment_text: str = ""
