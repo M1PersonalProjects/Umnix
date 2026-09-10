@@ -22,6 +22,9 @@ wheels/
 *.egg
 app.log
 
+# Uploaded and generated files
+backend/files/
+
 # Environment
 .env
 .env.local
